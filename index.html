@@ -358,11 +358,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Ihre Nachricht</label>
                         <textarea id="message" name="message" rows="4" required class="w-full bg-white border border-gray-300 rounded-lg p-3 text-black focus:ring-2 focus:ring-blue-500 focus:outline-none focus:border-blue-500 transition-colors"></textarea>
                     </div>
+                    <div class="mb-6">
+                        <input type="checkbox" id="gdpr-consent" name="gdpr-consent" required class="mr-2">
+                        <label for="gdpr-consent" class="text-sm text-gray-700">Ich habe die <a href="https://www.iubenda.com/privacy-policy/94267556" target="_blank" class="text-blue-600 hover:underline">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage zu.</label>
+                    </div>
                     <button type="submit" id="submit-button" class="w-full cta-button bg-[#316bff] text-white font-bold py-3 rounded-lg hover:opacity-90 transition-opacity duration-200 disabled:opacity-50 disabled:cursor-not-allowed">
                         <span class="relative z-10">Anfrage senden</span>
                         <span class="glow"></span>
                     </button>
-                    <p class="text-sm text-gray-500 mt-3">Wir melden uns so schnell wie möglich. Ihre Daten werden vertraulich und DSGVO-konform verarbeitet.</p>
+                    <p class="text-sm text-gray-500 mt-3">Wir melden uns so schnell wie möglich.</p>
                 </form>
             </div>
             <div id="form-feedback" class="hidden text-center py-10">

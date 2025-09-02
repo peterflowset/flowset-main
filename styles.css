@@ -4,6 +4,10 @@
     --glow-color-hover: rgba(49, 107, 255, 0.7);
 }
 
+html, body {
+    height: 100%;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     background-color: #FFFFFF;

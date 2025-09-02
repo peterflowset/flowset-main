@@ -40,12 +40,32 @@ const mobileMenu = document.getElementById('mobile-menu');
 const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 
 const openMenu = () => {
+    // Make sure the menu is fixed to the viewport and covers full height
+    mobileMenu.style.position = 'fixed';
+    mobileMenu.style.top = '0';
+    mobileMenu.style.left = '0';
+    mobileMenu.style.width = '100%';
+    mobileMenu.style.height = '100vh';
+    mobileMenu.style.zIndex = '100';
+    // show menu and ensure it starts at the top
     mobileMenu.classList.remove('hidden');
+    mobileMenu.scrollTop = 0;
+    // allow the menu itself to scroll if content is long
+    mobileMenu.style.overflowY = 'auto';
+    // prevent body from scrolling
     document.body.style.overflow = 'hidden';
 };
 
 const closeMenu = () => {
     mobileMenu.classList.add('hidden');
+    // remove inline styles added on open to restore default behavior
+    mobileMenu.style.position = '';
+    mobileMenu.style.top = '';
+    mobileMenu.style.left = '';
+    mobileMenu.style.width = '';
+    mobileMenu.style.height = '';
+    mobileMenu.style.zIndex = '';
+    mobileMenu.style.overflowY = '';
     document.body.style.overflow = '';
 };
 

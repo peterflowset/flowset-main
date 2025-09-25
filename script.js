@@ -172,9 +172,11 @@ contactForm.addEventListener('submit', async (e) => {
     submitButton.querySelector('span.relative').textContent = 'Sende...';
 
     const formData = {
-        name: contactForm.name.value,
+        firstname: contactForm.firstname.value,
+        lastname: contactForm.lastname.value,
         email: contactForm.email.value,
         company: contactForm.company.value,
+        phone: contactForm.phone.value,
         message: contactForm.message.value,
     };
 

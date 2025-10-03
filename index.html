@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>KI Agentur Südtirol | Künstliche Intelligenz, Automatisierung & Digitalisierung</title>
-    <script type="text/javascript" src="//embeds.iubenda.com/widgets/94e52fbf-8d4a-4481-bd84-64be34457158.js"></script>
-    <meta name="description" content="Flowset ist Ihre KI-Agentur in Südtirol. Wir automatisieren Prozesse für KMUs, sparen Zeit, senken Kosten und steigern Umsätze. Kostenloses Potenzialgespräch.">
+<script type="text/javascript" src="//embeds.iubenda.com/widgets/94e52fbf-8d4a-4481-bd84-64be34457158.js"></script>
+    <meta name="description" content="Flowset ist Ihre KI Agentur in Südtirol. Wir automatisieren Prozesse, digitalisieren Unternehmen und steigern Effizienz mit maßgeschneiderten KI-Lösungen.">
 
     <link rel="icon" type="image/png" href="logos/icon.png">
-    <link rel="stylesheet" href="styles.css">
 
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -26,19 +25,165 @@
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="script.js" defer></script>
-    <script id="vtag-ai-js" async src="https://r2.leadsy.ai/tag.js" data-pid="14fFizKe5R93QBvOQ" data-version="062024"></script>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Custom Styles & Tailwind Config */
+        :root {
+            --glow-color: rgba(49, 107, 255, 0.5); /* Adjusted glow to match new button color */
+            --glow-color-hover: rgba(49, 107, 255, 0.7);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF;
+            color: #1F2937;
+            overflow-x: hidden;
+        }
+        .gradient-heading {
+            background: linear-gradient(to right, #111827, #4A5568);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Interaktiver Hintergrund */
+        #spotlight {
+            background: radial-gradient(circle, rgba(49, 107, 255, 0.15) 0%, transparent 50%);
+            transition: transform 0.3s ease-out;
+            pointer-events: none;
+        }
+        #grid-pattern {
+            background-image: 
+                linear-gradient(to right, rgba(31, 41, 55, 0.05) 1px, transparent 1px), 
+                linear-gradient(to bottom, rgba(31, 41, 55, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+        }
+
+        /* Fade-in Animation */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Animierter Border für Service-Karten */
+        .service-card {
+            position: relative;
+            background-color: #F9FAFB;
+            border: 1px solid #E5E7EB;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 0.75rem;
+            border: 2px solid transparent;
+            background: linear-gradient(120deg, transparent, var(--glow-color), transparent) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            animation: rotate 4s linear infinite;
+        }
+        .service-card:hover::before { opacity: 1; }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        
+        /* Cursor-Glow für Buttons */
+        .cta-button { position: relative; overflow: hidden; }
+        .cta-button .glow {
+            position: absolute; width: 100px; height: 100px;
+            background: var(--glow-color-hover);
+            border-radius: 50%; filter: blur(20px);
+            opacity: 0; transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .cta-button:hover .glow { opacity: 1; }
+
+        /* Scroll-Progress-Bar */
+        #progress-bar {
+            position: fixed; top: 0; left: 0; height: 4px;
+            background: #316bff;
+            width: 0%; z-index: 100;
+            transition: width 0.1s ease-out;
+        }
+        
+        /* Animierte Prozesslinie & Schritte */
+        #process-line {
+            transform: scaleY(0); transform-origin: top;
+            transition: transform 1s ease-in-out;
+        }
+        #process.is-visible #process-line {
+            transform: scaleY(1);
+        }
+        .process-step {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        #process.is-visible .process-step:nth-child(1) { transition-delay: 200ms; }
+        #process.is-visible .process-step:nth-child(2) { transition-delay: 400ms; }
+        #process.is-visible .process-step:nth-child(3) { transition-delay: 600ms; }
+        #process.is-visible .process-step:nth-child(4) { transition-delay: 800ms; }
+        #process.is-visible .process-step {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        /* Scrolling Logo Bar */
+        .logo-scroller {
+            display: flex;
+            gap: 3rem; /* 48px */
+            animation: scroll 60s linear infinite;
+        }
+        .logo-item {
+            flex-shrink: 0;
+            filter: grayscale(1) opacity(0.7);
+        }
+        @keyframes scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-100%); }
+        }
+        @media (prefers-reduced-motion) {
+            .logo-scroller { animation: none; }
+        }
+
+        /* Staggered animation for service cards */
+        .service-card {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        #services.is-visible .service-card:nth-child(1) { transition-delay: 100ms; }
+        #services.is-visible .service-card:nth-child(2) { transition-delay: 200ms; }
+        #services.is-visible .service-card:nth-child(3) { transition-delay: 300ms; }
+        #services.is-visible .service-card:nth-child(4) { transition-delay: 400ms; }
+        #services.is-visible .service-card:nth-child(5) { transition-delay: 500ms; }
+
+        #services.is-visible .service-card {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body class="antialiased">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WRGL3PHN"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div id="progress-bar"></div>
     <div class="fixed inset-0 -z-10">
-        <div id="background-zoom"></div>
         <div id="grid-pattern" class="absolute inset-0"></div>
         <div id="spotlight" class="absolute h-[50rem] w-[50rem] rounded-full"></div>
     </div>
@@ -51,18 +196,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <a href="#services" class="text-gray-600 hover:text-black transition-colors duration-200">Leistungen</a>
                     <a href="#process" class="text-gray-600 hover:text-black transition-colors duration-200">Ablauf</a>
                     <a href="#about" class="text-gray-600 hover:text-black transition-colors duration-200">Über uns</a>
-                    <a href="#" class="open-modal-button cta-button bg-[#316bff] text-white font-semibold px-5 py-2.5 rounded-lg hover:opacity-90 transition-opacity duration-200"><span class="relative z-10">Kontakt</span><span class="glow"></span></a>
+                    <a href="#contact" class="cta-button bg-[#316bff] text-white font-semibold px-5 py-2.5 rounded-lg hover:opacity-90 transition-opacity duration-200"><span class="relative z-10">Kontakt</span><span class="glow"></span></a>
                 </div>
                 <div class="md:hidden"><button id="mobile-menu-button" class="text-gray-800 p-2" aria-label="Menü öffnen"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,88H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path></svg></button></div>
             </nav>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden fixed inset-0 w-full h-full bg-white z-[100]">
+        <div id="mobile-menu" class="hidden md:hidden fixed top-0 left-0 w-full h-full bg-white/95 backdrop-blur-lg">
             <div class="flex justify-end p-6 h-20 md:h-24"><button id="mobile-menu-close-button" class="text-gray-800 p-2" aria-label="Menü schließen"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg></button></div>
             <div class="flex flex-col items-center justify-center space-y-10 h-[calc(100%-80px)]">
                 <a href="#services" class="mobile-nav-link text-gray-600 hover:text-black text-2xl">Leistungen</a>
                 <a href="#process" class="mobile-nav-link text-gray-600 hover:text-black text-2xl">Ablauf</a>
                 <a href="#about" class="mobile-nav-link text-gray-600 hover:text-black text-2xl">Über uns</a>
-                <a href="#" class="open-modal-button mobile-nav-link bg-[#316bff] text-white font-semibold px-8 py-3 rounded-lg text-xl mt-6">Kontakt</a>
+                <a href="#contact" class="mobile-nav-link bg-[#316bff] text-white font-semibold px-8 py-3 rounded-lg text-xl mt-6">Kontakt</a>
             </div>
         </div>
     </header>
@@ -71,8 +216,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <section class="hero-section relative min-h-screen flex items-center justify-center text-center pt-20">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 fade-in-section"><span class="gradient-heading">Ihr Partner für KI und Digitalisierung.</span></h1>
-                <p class="max-w-3xl mx-auto text-lg md:text-xl text-gray-600 mb-10 fade-in-section" style="transition-delay: 150ms;">Wir helfen KMUs in Südtirol mit maßgeschneiderten KI- und Digitalisierungslösungen Prozesse zu optimieren – für weniger Kosten, mehr Zeit und mehr Umsatz.</p>
-                <div class="fade-in-section" style="transition-delay: 300ms;"><a href="#" class="open-modal-button cta-button bg-[#316bff] text-white font-bold text-base md:text-lg px-8 py-4 rounded-lg hover:opacity-90 transition-opacity duration-200 inline-block shadow-lg shadow-blue-500/20"><span class="relative z-10">Kostenloses Potenzialgespräch buchen</span><span class="glow"></span></a></div>
+                <p class="max-w-3xl mx-auto text-lg md:text-xl text-gray-600 mb-10 fade-in-section" style="transition-delay: 150ms;">Wir helfen KMUs in Südtirol, mit maßgeschneiderten KI- und Digitalisierungslösungen Prozesse zu optimieren – für weniger Kosten, mehr Zeit und mehr Umsatz.</p>
+                <div class="fade-in-section" style="transition-delay: 300ms;"><a href="#contact" class="cta-button bg-[#316bff] text-white font-bold text-base md:text-lg px-8 py-4 rounded-lg hover:opacity-90 transition-opacity duration-200 inline-block shadow-lg shadow-blue-500/20"><span class="relative z-10">Kostenloses Potenzialgespräch</span><span class="glow"></span></a></div>
                 <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-y-8 gap-x-4 max-w-4xl mx-auto text-left fade-in-section" style="transition-delay: 450ms;">
                     <div class="flex items-center space-x-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="text-green-500 flex-shrink-0" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"></path></svg><p class="text-gray-700"><strong class="text-black">Mehr Zeit</strong> für strategische Aufgaben</p></div>
                     <div class="flex items-center space-x-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="text-green-500 flex-shrink-0" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"></path></svg><p class="text-gray-700"><strong class="text-black">Umsatz steigern</strong> durch Effizienz</p></div>
@@ -84,7 +229,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <section class="py-16 sm:py-20 fade-in-section">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-4xl mx-auto text-center text-gray-700 text-lg bg-gray-50/70 p-8 rounded-xl border border-gray-200/80">
-                    <p>Als <strong class="text-black">KI Agentur in Südtirol</strong> unterstützen wir kleine und mittelständische Unternehmen dabei, ihre Prozesse durch Digitalisierung und Automatisierung effizienter zu gestalten. Mit über 50 automatisierten Prozessen – von modernen CRM-Systemen über Lead-Recherche bis hin zu Recruiting, Chatbots und Telefonassistenten – entwickeln wir maßgeschneiderte Lösungen, die messbar Zeit sparen, Kosten senken und das Wachstum fördern. Mit unserer Erfahrung als <strong class="text-black">Digitalisierungsagentur in Südtirol</strong> verbinden wir neueste KI-Technologien mit praxisnaher Umsetzung – für Unternehmen, die den nächsten Schritt gehen wollen.</p>
+                    <p>Als <strong class="text-black">KI Agentur in Südtirol</strong> unterstützen wir kleine und mittelständische Unternehmen dabei, ihre Prozesse durch Digitalisierung und Automatisierung effizienter zu gestalten. Von modernen CRM-Systemen über Lead-Recherche bis hin zu Recruiting und Chatbots entwickeln wir maßgeschneiderte Lösungen, die messbar Zeit sparen, Kosten senken und das Wachstum fördern. Mit unserer Erfahrung als <strong class="text-black">Digitalisierungsagentur in Südtirol</strong> verbinden wir neueste KI-Technologien mit praxisnaher Umsetzung – für Unternehmen, die den nächsten Schritt gehen wollen.</p>
                 </div>
             </div>
         </section>
@@ -140,23 +285,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
                     <div class="service-card rounded-xl p-8 flex flex-col md:col-span-1 lg:col-span-2">
                         <h3 class="text-xl font-semibold text-gray-900 mb-3">Maßgeschneidertes CRM mit smarten Automationen</h3>
-                        <p class="text-gray-600">Problem: Leads gehen in verschiedenen Systemen verloren. Lösung: Unser KI-CRM sammelt, vereinheitlicht und priorisiert Leads automatisch. Ergebnis: Ihr Vertrieb konzentriert sich auf die besten Chancen – weniger manuelle Arbeit, höhere Abschlussraten.</p>
+                        <p class="text-gray-600">Unser KI-unterstütztes CRM sammelt Leads automatisch aus verschiedenen Portalen und speichert sie zentral. Smarte Automationen sorgen dafür, dass kein Kontakt verloren geht, Follow-ups automatisch erfolgen und alle wichtigen Informationen immer griffbereit sind – für einen reibungslosen und effizienten Vertriebsprozess.</p>
                     </div>
                     <div class="service-card rounded-xl p-8 flex flex-col md:col-span-1 lg:col-span-2">
                         <h3 class="text-xl font-semibold text-gray-900 mb-3">Automatisierte Lead-Generierung & -Recherche</h3>
-                        <p class="text-gray-600">Problem: Zeitintensive Lead-Recherche bremst Ihr Wachstum. Lösung: Wir automatisieren die Suche, enrichen Daten und qualifizieren vor. Ergebnis: Mehr qualifizierte Leads mit geringerem Aufwand für Ihr Team.</p>
+                        <p class="text-gray-600">Eingehende Leads werden automatisch recherchiert, mit relevanten Daten angereichert und vorqualifiziert. So landet nur das Beste im CRM – perfekt vorbereitet für Ihr Vertriebsteam, das sich direkt auf den Abschluss konzentrieren kann.</p>
                     </div>
                     <div class="service-card rounded-xl p-8 flex flex-col md:col-span-2 lg:col-span-2">
                         <h3 class="text-xl font-semibold text-gray-900 mb-3">KI-unterstütztes Recruiting</h3>
-                        <p class="text-gray-600">Problem: Vielversprechende Kandidaten gehen in der Masse verloren. Lösung: Automatisierte Analyse und Sortierung von Bewerbungen nach Ihren Kriterien. Ergebnis: Schnellere, präzisere Einstellungsentscheidungen.</p>
+                        <p class="text-gray-600">Bewerbungen werden automatisch analysiert, bewertet und nach Ihren Kriterien sortiert. So stellen Sie sicher, dass starke Kandidaten nicht in der Masse untergehen – und der Auswahlprozess wird schneller, präziser und effizienter.</p>
                     </div>
                     <div class="service-card rounded-xl p-8 flex flex-col md:col-span-1 lg:col-start-2 lg:col-span-2">
                         <h3 class="text-xl font-semibold text-gray-900 mb-3">Intelligente Support-Chatbots</h3>
-                        <p class="text-gray-600">Problem: Supportanfragen binden Ressourcen. Lösung: Chatbots beantworten Standardanfragen und leiten nur komplexe Fälle weiter. Ergebnis: Bis zu 80 % weniger Routineanfragen für Ihr Team, bessere Kundenzufriedenheit.</p>
+                        <p class="text-gray-600">Mit Zugriff auf Ihr gesamtes Unternehmenswissen beantworten Chatbots bis zu 80 % aller Standardanfragen sofort und leiten komplexe Fälle direkt an den richtigen Ansprechpartner weiter. Das entlastet Ihr Team und sorgt für schnellen, reibungslosen Kundenservice – rund um die Uhr.</p>
                     </div>
                     <div class="service-card rounded-xl p-8 flex flex-col md:col-span-1 lg:col-span-2">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-3">KI Telefonassistent</h3>
-                        <p class="text-gray-600">Problem: Verpasste Anrufe kosten Kunden und Umsatz. Lösung: Unser KI-Telefonassistent nimmt Anrufe entgegen, beantwortet Fragen und terminiert Gespräche automatisch. Ergebnis: Keine verpassten Anfragen mehr, bessere Kundenbetreuung rund um die Uhr.</p>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">KI-gestützter Angebotsgenerator</h3>
+                        <p class="text-gray-600">In Sekunden zu einem fehlerfreien, personalisierten Angebot: Der Generator nutzt Produkt- und CRM-Daten, um den Erstellungsaufwand um bis zu 90 % zu reduzieren. Mehr Zeit fürs Wesentliche – Ihre Kunden.</p>
                     </div>
                 </div>
             </div>
@@ -194,13 +339,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <div>
                             <h4 class="text-lg font-bold text-gray-900">Leon Gitterle</h4>
                             <p class="text-gray-600 mt-2">Co-Founder & Marketing</p>
+                            <p class="text-gray-600 mt-1">leon@flowset.ai</p>
                         </div>
                     </div>
                     <div class="text-center">
                         <img src="team/Peter.png" alt="Peter Kasseroler" class="rounded-full w-32 h-32 mx-auto mb-4 border-2 border-gray-200 object-cover">
                         <div>
-                           <h4 class="text-lg font-bold text-gray-900">Peter Kasseroler</h4>
-                           <p class="text-gray-600 mt-2">Co-Founder & Product</p>
+                            <h4 class="text-lg font-bold text-gray-900">Peter Kasseroler</h4>
+                            <p class="text-gray-600 mt-2">Co-Founder & Product</p>
+                            <p class="text-gray-600 mt-1">peter@flowset.ai</p>
                         </div>
                     </div>
                     <div class="text-center">
@@ -208,6 +355,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <div>
                             <h4 class="text-lg font-bold text-gray-900">David Peintner</h4>
                             <p class="text-gray-600 mt-2">Co-Founder & Sales</p>
+                            <p class="text-gray-600 mt-1">david@flowset.ai</p>
                         </div>
                     </div>
                 </div>
@@ -225,101 +373,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
         </section>
 
-        <div class="w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent my-8"></div>
-
-        <section id="faq" class="py-16 sm:py-20 md:py-28 fade-in-section">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Häufig gestellte Fragen</h2>
-                    <p class="text-lg text-gray-600">Hier finden Sie Antworten auf die am häufigsten gestellten Fragen zu unseren Dienstleistungen.</p>
-                </div>
-                <div class="mt-16 max-w-3xl mx-auto space-y-4">
-                    <details class="faq-item bg-white/70 p-6 rounded-xl border border-gray-200/80 shadow-sm">
-                        <summary class="flex justify-between items-center cursor-pointer text-lg font-semibold text-gray-900">
-                            Wie kann KI mir helfen?
-                            <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </summary>
-                        <div class="mt-4 text-gray-600">
-                            <p>KI hilft Ihrem KMU, repetitive Aufgaben zu automatisieren, Daten schneller auszuwerten und personalisierte Kundenerlebnisse zu schaffen. Praxisbeispiele sind automatische Lead-Qualifizierung, Chatbots für Support und automatische Angebotserstellung — Ergebnis: mehr Zeit, geringere Kosten und steigender Umsatz.</p>
-                        </div>
-                    </details>
-                    <details class="faq-item bg-white/70 p-6 rounded-xl border border-gray-200/80 shadow-sm">
-                        <summary class="flex justify-between items-center cursor-pointer text-lg font-semibold text-gray-900">
-                            Welche Unternehmen profitieren am meisten von Ihren Dienstleistungen?
-                            <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </summary>
-                        <div class="mt-4 text-gray-600">
-                            <p>Unsere Dienstleistungen sind ideal für kleine und mittelständische Unternehmen in Südtirol, die ihre internen Abläufe optimieren, die Effizienz steigern und wettbewerbsfähiger werden möchten. Egal ob Sie manuelle Aufgaben automatisieren, Daten besser nutzen oder Ihre Kundenbeziehungen verbessern wollen – wir sind der richtige Partner.</p>
-                        </div>
-                    </details>
-                    <details class="faq-item bg-white/70 p-6 rounded-xl border border-gray-200/80 shadow-sm">
-                        <summary class="flex justify-between items-center cursor-pointer text-lg font-semibold text-gray-900">
-                            Ist KI zu teuer oder zu komplex für mein Unternehmen?
-                            <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </summary>
-                        <div class="mt-4 text-gray-600">
-                            <p>Nein, wir entwickeln maßgeschneiderte und skalierbare KI-Lösungen, die speziell auf die Bedürfnisse und Budgets von Unternehmen zugeschnitten sind. Unser Ziel ist es, einen klaren Mehrwert zu liefern, indem wir Lösungen implementieren, die schnell messbare Ergebnisse liefern und sich für Sie auszahlen. Wir kümmern uns um die technische Umsetzung, Sie profitieren von der Einfachheit.</p>
-                        </div>
-                    </details>
-                    <details class="faq-item bg-white/70 p-6 rounded-xl border border-gray-200/80 shadow-sm">
-                        <summary class="flex justify-between items-center cursor-pointer text-lg font-semibold text-gray-900">
-                            Wie lange dauert die Implementierung einer KI-Lösung?
-                            <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </summary>
-                        <div class="mt-4 text-gray-600">
-                            <p>Die Dauer hängt stark von der Komplexität und dem Umfang der jeweiligen Lösung ab. Nach einer ersten Analyse und Potenzialbewertung erstellen wir einen detaillierten Zeitplan. Kleinere Automatisierungen können bereits in wenigen Wochen implementiert werden, während umfassendere Projekte mehrere Monate in Anspruch nehmen können. Transparenz im Prozess ist uns dabei sehr wichtig.</p>
-                        </div>
-                    </details>
-                    <details class="faq-item bg-white/70 p-6 rounded-xl border border-gray-200/80 shadow-sm">
-                        <summary class="flex justify-between items-center cursor-pointer text-lg font-semibold text-gray-900">
-                            Benötigen wir spezielle technische Vorkenntnisse, um mit Ihren Lösungen zu arbeiten?
-                            <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </summary>
-                        <div class="mt-4 text-gray-600">
-                            <p>Absolut nicht. Wir entwickeln benutzerfreundliche Lösungen und bieten umfassende Schulungen und Support an. Unser Ziel ist es, dass Ihre Mitarbeiter die neuen Tools intuitiv nutzen können, ohne dass tiefgreifende technische Kenntnisse erforderlich sind. Wir sind auch nach der Implementierung für Sie da.</p>
-                        </div>
-                    </details>
-                    <details class="faq-item bg-white/70 p-6 rounded-xl border border-gray-200/80 shadow-sm">
-                        <summary class="flex justify-between items-center cursor-pointer text-lg font-semibold text-gray-900">
-                            Was unterscheidet Flowset von anderen Digitalisierungsagenturen?
-                            <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </summary>
-                        <div class="mt-4 text-gray-600">
-                            <p>Wir sind eine spezialisierte KI-Agentur mit Fokus auf KMUs in Südtirol. Unsere Stärke liegt in der Kombination aus tiefem KI-Know-how, praxisnaher Umsetzung und einem starken Verständnis für die spezifischen Herausforderungen mittelständischer Unternehmen. Wir bieten nicht nur Technologie, sondern ganzheitliche Lösungen, die messbare Ergebnisse liefern und Ihr Geschäft voranbringen. Unser persönlicher Support und die langfristige Begleitung sind uns besonders wichtig.</p>
-                        </div>
-                    </details>
-                    <details class="faq-item bg-white/70 p-6 rounded-xl border border-gray-200/80 shadow-sm">
-                        <summary class="flex justify-between items-center cursor-pointer text-lg font-semibold text-gray-900">
-                            Wie läuft ein typisches Projekt mit Flowset ab?
-                            <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </summary>
-                        <div class="mt-4 text-gray-600">
-                            <p>Unser Prozess umfasst vier Schritte: Analyse & Potenzial, Konzept & Strategie, Umsetzung & Integration, Support & Optimierung.</p>
-                        </div>
-                    </details>
-                    <details class="faq-item bg-white/70 p-6 rounded-xl border border-gray-200/80 shadow-sm">
-                        <summary class="flex justify-between items-center cursor-pointer text-lg font-semibold text-gray-900">
-                            Können Sie uns bei der Lead-Generierung und -Qualifizierung unterstützen?
-                            <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </summary>
-                        <div class="mt-4 text-gray-600">
-                            <p>Ja, das ist einer unserer Kernbereiche. Wir automatisieren die Lead-Recherche, reichern Leads mit relevanten Daten an und qualifizieren sie vor, sodass Ihr Vertriebsteam sich auf die vielversprechendsten Kontakte konzentrieren kann. Das spart Zeit und erhöht die Abschlussquoten.</p>
-                        </div>
-                    </details>
-                </div>
-            </div>
-        </section>
-
         <section id="contact" class="py-16 sm:py-20 md:py-28 bg-gray-50/70 fade-in-section">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                <div class="text-center">
-    <h2 class="text-3xl md:text-4xl font-bold mb-4">Bereit, den Schalter umzulegen?</h2>
-    <p class="mx-auto max-w-2xl text-lg text-gray-600 mb-8">
-    Buchen Sie jetzt Ihr kostenloses und unverbindliches Erstgespräch.
-    Lassen Sie uns gemeinsam herausfinden, wie viel ungenutztes Potenzial in Ihrem Unternehmen steckt.
-</p>
-    <a href="#" class="open-modal-button cta-button bg-[#316bff] text-white font-bold text-lg px-8 py-4 rounded-lg hover:opacity-90 transition-opacity duration-200 inline-block shadow-lg shadow-blue-500/20"><span class="relative z-10">Gespräch vereinbaren</span><span class="glow"></span></a>
-</div>
+                   <h2 class="text-3xl md:text-4xl font-bold mb-4">Bereit, den Schalter umzulegen?</h2>
+                   <p class="mx-auto max-w-2xl text-lg text-gray-600 mb-8">
+                   Buchen Sie jetzt Ihr kostenloses und unverbindliches Erstgespräch.
+                   Lassen Sie uns gemeinsam herausfinden, wie viel ungenutztes Potenzial in Ihrem Unternehmen steckt.
+               </p>
+                   <div id="form-view" class="max-w-lg mx-auto">
+                       <form id="contact-form">
+                           <div class="mb-4">
+                               <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Ihr Name</label>
+                               <input type="text" id="name" name="name" required class="w-full bg-white border border-gray-300 rounded-lg p-3 text-black focus:ring-2 focus:ring-blue-500 focus:outline-none focus:border-blue-500 transition-colors">
+                           </div>
+                           <div class="mb-4">
+                               <label for="email" class="block text-sm font-medium text-gray-700 mb-2">E-Mail Adresse</label>
+                               <input type="email" id="email" name="email" required class="w-full bg-white border border-gray-300 rounded-lg p-3 text-black focus:ring-2 focus:ring-blue-500 focus:outline-none focus:border-blue-500 transition-colors">
+                           </div>
+                           <div class="mb-4">
+                               <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Unternehmen (Optional)</label>
+                               <input type="text" id="company" name="company" class="w-full bg-white border border-gray-300 rounded-lg p-3 text-black focus:ring-2 focus:ring-blue-500 focus:outline-none focus:border-blue-500 transition-colors">
+                           </div>
+                           <div class="mb-6">
+                               <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Ihre Nachricht</label>
+                               <textarea id="message" name="message" rows="4" required class="w-full bg-white border border-gray-300 rounded-lg p-3 text-black focus:ring-2 focus:ring-blue-500 focus:outline-none focus:border-blue-500 transition-colors"></textarea>
+                           </div>
+                           <button type="submit" id="submit-button" class="w-full cta-button bg-[#316bff] text-white font-bold py-3 rounded-lg hover:opacity-90 transition-opacity duration-200 disabled:opacity-50 disabled:cursor-not-allowed">
+                               <span class="relative z-10">Anfrage senden</span>
+                               <span class="glow"></span>
+                           </button>
+                       </form>
+                   </div>
+                   <div id="form-feedback" class="hidden text-center py-10">
+                       <div id="form-success-message" class="hidden">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="text-green-500 mx-auto mb-4" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"></path></svg>
+                           <h3 class="text-2xl font-bold text-gray-900 mb-2">Vielen Dank!</h3>
+                           <p class="text-gray-600">Ihre Anfrage wurde erfolgreich gesendet. Wir melden uns in Kürze.</p>
+                       </div>
+                       <div id="form-error-message" class="hidden">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="text-red-500 mx-auto mb-4" viewBox="0 0 256 256"><path d="M128,24a104,104,0,1,0,104,104A104.11,104.11,0,0,0,128,24Zm37.66,130.34a8,8,0,0,1-11.32,11.32L128,139.31l-26.34,26.35a8,8,0,0,1-11.32-11.32L116.69,128,90.34,101.66a8,8,0,0,1,11.32-11.32L128,116.69l26.34-26.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg>
+                           <h3 class="text-2xl font-bold text-gray-900 mb-2">Ein Fehler ist aufgetreten</h3>
+                           <p class="text-gray-600">Ihre Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es später erneut.</p>
+                       </div>
+                   </div>
+               </div>
         </section>
     </main>
 
@@ -333,63 +431,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </footer>
 
-    <div id="contact-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-[110] hidden items-start sm:items-center justify-center p-6 sm:p-4 overflow-y-auto transition-opacity duration-300">
-        <div id="modal-content" class="bg-white border border-gray-200 rounded-xl p-6 sm:p-8 w-full max-w-lg relative transform transition-transform duration-300 scale-95 max-h-[90vh] overflow-y-auto">
-            <button id="close-modal-button" class="absolute top-4 right-4 text-gray-500 hover:text-black transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg>
-            </button>
-            <div id="form-view">
-                <h3 class="text-2xl font-bold text-gray-900 mb-2">Kontakt aufnehmen</h3>
-                <p class="text-gray-600 mb-6">Füllen Sie das Formular aus und wir melden uns in Kürze bei Ihnen.</p>
-                <form id="contact-form">
-                    <div class="mb-4">
-                        <label for="firstname" class="block text-sm font-medium text-gray-700 mb-2">Vorname</label>
-                        <input type="text" id="firstname" name="firstname" required class="w-full bg-white border border-gray-300 rounded-lg p-3 text-black focus:ring-2 focus:ring-blue-500 focus:outline-none focus:border-blue-500 transition-colors">
-                    </div>
-                    <div class="mb-4">
-                        <label for="lastname" class="block text-sm font-medium text-gray-700 mb-2">Nachname</label>
-                        <input type="text" id="lastname" name="lastname" required class="w-full bg-white border border-gray-300 rounded-lg p-3 text-black focus:ring-2 focus:ring-blue-500 focus:outline-none focus:border-blue-500 transition-colors">
-                    </div>
-                    <div class="mb-4">
-                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">E-Mail Adresse</label>
-                        <input type="email" id="email" name="email" required class="w-full bg-white border border-gray-300 rounded-lg p-3 text-black focus:ring-2 focus:ring-blue-500 focus:outline-none focus:border-blue-500 transition-colors">
-                    </div>
-                    <div class="mb-4">
-                        <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Unternehmen</label>
-                        <input type="text" id="company" name="company" required class="w-full bg-white border border-gray-300 rounded-lg p-3 text-black focus:ring-2 focus:ring-blue-500 focus:outline-none focus:border-blue-500 transition-colors">
-                    </div>
-                    <div class="mb-4">
-                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Telefonnummer</label>
-                        <input type="tel" id="phone" name="phone" required class="w-full bg-white border border-gray-300 rounded-lg p-3 text-black focus:ring-2 focus:ring-blue-500 focus:outline-none focus:border-blue-500 transition-colors">
-                    </div>
-                    <div class="mb-6">
-                        <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Ihre Nachricht (Optional)</label>
-                        <textarea id="message" name="message" rows="4" class="w-full bg-white border border-gray-300 rounded-lg p-3 text-black focus:ring-2 focus:ring-blue-500 focus:outline-none focus:border-blue-500 transition-colors"></textarea>
-                    </div>
-                    <div class="mb-6">
-                        <input type="checkbox" id="gdpr-consent" name="gdpr-consent" required class="mr-2">
-                        <label for="gdpr-consent" class="text-sm text-gray-700">Ich habe die <a href="https://www.iubenda.com/privacy-policy/94267556" target="_blank" class="text-blue-600 hover:underline">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage zu.</label>
-                    </div>
-                    <button type="submit" id="submit-button" class="w-full cta-button bg-[#316bff] text-white font-bold py-3 rounded-lg hover:opacity-90 transition-opacity duration-200 disabled:opacity-50 disabled:cursor-not-allowed">
-                        <span class="relative z-10">Anfrage senden</span>
-                        <span class="glow"></span>
-                    </button>
-                </form>
-            </div>
-            <div id="form-feedback" class="hidden text-center py-10">
-                <div id="form-success-message" class="hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="text-green-500 mx-auto mb-4" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"></path></svg>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Vielen Dank!</h3>
-                    <p class="text-gray-600">Ihre Anfrage wurde erfolgreich gesendet. Wir melden uns in Kürze.</p>
-                </div>
-                <div id="form-error-message" class="hidden">
-                     <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="text-red-500 mx-auto mb-4" viewBox="0 0 256 256"><path d="M128,24a104,104,0,1,0,104,104A104.11,104.11,0,0,0,128,24Zm37.66,130.34a8,8,0,0,1-11.32,11.32L128,139.31l-26.34,26.35a8,8,0,0,1-11.32-11.32L116.69,128,90.34,101.66a8,8,0,0,1,11.32-11.32L128,116.69l26.34-26.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Ein Fehler ist aufgetreten</h3>
-                    <p class="text-gray-600">Ihre Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es später erneut.</p>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
     <script>
@@ -473,58 +514,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             }
 
 
-            // Contact Form Modal Logic
-            const contactModal = document.getElementById('contact-modal');
-            const modalContent = document.getElementById('modal-content');
-            const openModalButtons = document.querySelectorAll('.open-modal-button');
-            const closeModalButton = document.getElementById('close-modal-button');
+
             const contactForm = document.getElementById('contact-form');
             const submitButton = document.getElementById('submit-button');
             const formView = document.getElementById('form-view');
             const formFeedback = document.getElementById('form-feedback');
             const successMessage = document.getElementById('form-success-message');
             const errorMessage = document.getElementById('form-error-message');
-
-            const openContactModal = () => {
-                contactModal.classList.remove('hidden');
-                contactModal.classList.add('flex');
-                setTimeout(() => {
-                    contactModal.classList.add('opacity-100');
-                    modalContent.classList.remove('scale-95');
-                }, 10);
-                document.body.style.overflow = 'hidden';
-            };
-
-            const closeContactModal = () => {
-                contactModal.classList.remove('opacity-100');
-                modalContent.classList.add('scale-95');
-                setTimeout(() => {
-                    contactModal.classList.add('hidden');
-                    contactModal.classList.remove('flex');
-                    if (mobileMenu.classList.contains('hidden')) {
-                         document.body.style.overflow = '';
-                    }
-                    formView.classList.remove('hidden');
-                    formFeedback.classList.add('hidden');
-                    successMessage.classList.add('hidden');
-                    errorMessage.classList.add('hidden');
-                    contactForm.reset();
-                }, 300);
-            };
-
-            openModalButtons.forEach(button => {
-                button.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    openContactModal();
-                });
-            });
-
-            closeModalButton.addEventListener('click', closeContactModal);
-            contactModal.addEventListener('click', (e) => {
-                if(e.target === contactModal) {
-                    closeContactModal();
-                }
-            });
 
             contactForm.addEventListener('submit', async (e) => {
                 e.preventDefault();

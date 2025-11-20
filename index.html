@@ -147,11 +147,43 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
         }
 
-        /* Scroller */
-        .logo-scroller { display: flex; gap: 4rem; animation: scroll 40s linear infinite; }
-        .logo-item { flex-shrink: 0; filter: grayscale(1) opacity(0.6); transition: filter 0.3s; }
-        .logo-item:hover { filter: grayscale(0) opacity(1); }
-        @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+       /* --- TECH STACK SCROLLER (Optimiert) --- */
+        .logo-container {
+            mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+
+        .logo-track {
+            display: flex;
+            gap: 4rem; /* Abstand zwischen Logos */
+            width: max-content;
+            animation: scroll 30s linear infinite; /* Geschwindigkeit */
+        }
+
+        .logo-item {
+            height: 2.5rem; /* h-10 äquivalent */
+            width: auto;
+            flex-shrink: 0;
+            filter: grayscale(1) opacity(0.6);
+            transition: all 0.3s ease;
+        }
+        
+        /* Hover-Effekt: Wenn man mit der Maus drüber fährt, werden alle farbig oder stoppen (optional) */
+        .logo-container:hover .logo-track {
+            animation-play-state: paused; /* Stoppt beim Hovern zum genaueren Ansehen */
+        }
+        .logo-item:hover {
+            filter: grayscale(0) opacity(1);
+            transform: scale(1.1);
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } /* Muss -50% sein, da wir die Liste verdoppeln */
+        }
         
         /* Process Line */
         #process-line { transform: scaleY(0); transform-origin: top; transition: transform 1s ease-in-out; }
@@ -279,26 +311,32 @@
             </div>
         </section>
 
-        <section class="py-10 border-y border-gray-100 bg-gray-50/50">
-            <div class="container mx-auto px-4">
-                <p class="text-center text-sm font-semibold text-gray-400 uppercase tracking-wider mb-6">Wir arbeiten mit modernster Technologie</p>
-                <div class="logo-scroller relative overflow-hidden w-full mask-image-linear-gradient">
-                    <div class="flex gap-12 animate-scroll items-center justify-center">
-                         <img class="h-8 opacity-60 grayscale hover:grayscale-0 transition-all" src="logos/openai.svg" alt="OpenAI">
-                         <img class="h-8 opacity-60 grayscale hover:grayscale-0 transition-all" src="logos/hubspot.webp" alt="HubSpot">
-                         <img class="h-8 opacity-60 grayscale hover:grayscale-0 transition-all" src="logos/make.png" alt="Make">
-                         <img class="h-8 opacity-60 grayscale hover:grayscale-0 transition-all" src="logos/airtable.png" alt="Airtable">
-                         <img class="h-8 opacity-60 grayscale hover:grayscale-0 transition-all" src="logos/n8n.png" alt="n8n">
-                         <img class="h-8 opacity-60 grayscale hover:grayscale-0 transition-all" src="logos/supabase.png" alt="Supabase">
-                         <img class="h-8 opacity-60 grayscale hover:grayscale-0 transition-all" src="logos/anthropic.svg" alt="Anthropic">
-                         <img class="h-8 opacity-60 grayscale hover:grayscale-0 transition-all" src="logos/openai.svg" alt="OpenAI">
-                         <img class="h-8 opacity-60 grayscale hover:grayscale-0 transition-all" src="logos/hubspot.webp" alt="HubSpot">
-                         <img class="h-8 opacity-60 grayscale hover:grayscale-0 transition-all" src="logos/make.png" alt="Make">
-                         <img class="h-8 opacity-60 grayscale hover:grayscale-0 transition-all" src="logos/airtable.png" alt="Airtable">
-                         <img class="h-8 opacity-60 grayscale hover:grayscale-0 transition-all" src="logos/n8n.png" alt="n8n">
-                         <img class="h-8 opacity-60 grayscale hover:grayscale-0 transition-all" src="logos/supabase.png" alt="Supabase">
+        <section class="py-12 border-y border-gray-100 bg-gray-50/50">
+            <div class="container mx-auto px-4 text-center">
+                <p class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-8">Wir arbeiten mit modernster Technologie</p>
+                
+                <div class="max-w-xl mx-auto"> 
+                    <div class="logo-container">
+                        <div class="logo-track">
+                            <img class="logo-item" src="logos/openai.svg" alt="OpenAI">
+                            <img class="logo-item" src="logos/hubspot.webp" alt="HubSpot">
+                            <img class="logo-item" src="logos/make.png" alt="Make">
+                            <img class="logo-item" src="logos/airtable.png" alt="Airtable">
+                            <img class="logo-item" src="logos/n8n.png" alt="n8n">
+                            <img class="logo-item" src="logos/supabase.png" alt="Supabase">
+                            <img class="logo-item" src="logos/anthropic.svg" alt="Anthropic">
+                            
+                            <img class="logo-item" src="logos/openai.svg" alt="OpenAI">
+                            <img class="logo-item" src="logos/hubspot.webp" alt="HubSpot">
+                            <img class="logo-item" src="logos/make.png" alt="Make">
+                            <img class="logo-item" src="logos/airtable.png" alt="Airtable">
+                            <img class="logo-item" src="logos/n8n.png" alt="n8n">
+                            <img class="logo-item" src="logos/supabase.png" alt="Supabase">
+                            <img class="logo-item" src="logos/anthropic.svg" alt="Anthropic">
+                        </div>
                     </div>
                 </div>
+
             </div>
         </section>
 
@@ -344,49 +382,55 @@
             </div>
         </section>
 
-        <section id="process" class="py-20 lg:py-28 bg-gray-50/50 fade-in-section">
+       <section id="process" class="py-20 lg:py-28 bg-gray-50/50 fade-in-section">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">So starten wir</h2>
                     <p class="text-lg text-gray-600">Transparenz ist uns wichtig. Von der ersten Analyse bis zur laufenden Betreuung.</p>
                 </div>
                 
-                <div class="max-w-2xl mx-auto relative">
-                    <div class="absolute left-5 top-5 h-[80%] w-0.5 bg-gradient-to-b from-gray-200 via-gray-200 to-transparent -z-10" id="process-line"></div>
+                <div class="max-w-2xl mx-auto">
                     
-                    <div class="space-y-16">
-                        <div class="relative flex items-start process-step">
-                            <div class="flex-shrink-0 w-10 h-10 bg-white border-2 border-blue-600 rounded-full flex items-center justify-center z-10 text-blue-600 font-bold shadow-sm">1</div>
-                            <div class="ml-8">
-                                <h3 class="text-xl font-bold text-gray-900">Potenzialanalyse (Kostenlos)</h3>
-                                <p class="mt-2 text-gray-600">Wir finden heraus, wo in Ihrem Unternehmen Zeit und Geld verbrannt wird und ob sich eine Automatisierung lohnt.</p>
-                            </div>
-                        </div>
+                    <div class="relative flex gap-8 pb-16 process-step">
+                        <div class="absolute left-5 top-5 bottom-0 w-0.5 bg-gray-200 -z-10"></div>
                         
-                        <div class="relative flex items-start process-step">
-                            <div class="flex-shrink-0 w-10 h-10 bg-white border-2 border-gray-400 rounded-full flex items-center justify-center z-10 text-gray-600 font-bold shadow-sm">2</div>
-                            <div class="ml-8">
-                                <h3 class="text-xl font-bold text-gray-900">Strategie & Fahrplan</h3>
-                                <p class="mt-2 text-gray-600">Sie erhalten ein klares Konzept: Welche Tools nutzen wir? Wie binden wir sie ein? Was kostet es?</p>
-                            </div>
-                        </div>
-                        
-                        <div class="relative flex items-start process-step">
-                            <div class="flex-shrink-0 w-10 h-10 bg-white border-2 border-gray-400 rounded-full flex items-center justify-center z-10 text-gray-600 font-bold shadow-sm">3</div>
-                            <div class="ml-8">
-                                <h3 class="text-xl font-bold text-gray-900">Umsetzung</h3>
-                                <p class="mt-2 text-gray-600">Wir bauen die Lösung, testen sie ausgiebig und schulen Ihr Team, damit alles reibungslos läuft.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="relative flex items-start process-step">
-                            <div class="flex-shrink-0 w-10 h-10 bg-white border-2 border-gray-400 rounded-full flex items-center justify-center z-10 text-gray-600 font-bold shadow-sm">4</div>
-                            <div class="ml-8">
-                                <h3 class="text-xl font-bold text-gray-900">Support</h3>
-                                <p class="mt-2 text-gray-600">Auch nach dem Start lassen wir Sie nicht allein. Wir optimieren laufend und stehen bei Fragen bereit.</p>
-                            </div>
+                        <div class="flex-shrink-0 w-10 h-10 bg-white border-2 border-blue-600 rounded-full flex items-center justify-center z-10 text-blue-600 font-bold shadow-sm">1</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">Potenzialanalyse (Kostenlos)</h3>
+                            <p class="mt-2 text-gray-600">Wir finden heraus, wo in Ihrem Unternehmen Zeit und Geld verbrannt wird und ob sich eine Automatisierung lohnt.</p>
                         </div>
                     </div>
+                    
+                    <div class="relative flex gap-8 pb-16 process-step">
+                        <div class="absolute left-5 top-0 bottom-0 w-0.5 bg-gray-200 -z-10"></div>
+                        
+                        <div class="flex-shrink-0 w-10 h-10 bg-white border-2 border-gray-400 rounded-full flex items-center justify-center z-10 text-gray-600 font-bold shadow-sm">2</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">Strategie & Fahrplan</h3>
+                            <p class="mt-2 text-gray-600">Sie erhalten ein klares Konzept: Welche Tools nutzen wir? Wie binden wir sie ein? Was kostet es?</p>
+                        </div>
+                    </div>
+                    
+                    <div class="relative flex gap-8 pb-16 process-step">
+                        <div class="absolute left-5 top-0 bottom-0 w-0.5 bg-gray-200 -z-10"></div>
+                        
+                        <div class="flex-shrink-0 w-10 h-10 bg-white border-2 border-gray-400 rounded-full flex items-center justify-center z-10 text-gray-600 font-bold shadow-sm">3</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">Umsetzung</h3>
+                            <p class="mt-2 text-gray-600">Wir bauen die Lösung, testen sie ausgiebig und schulen Ihr Team, damit alles reibungslos läuft.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="relative flex gap-8 process-step">
+                        <div class="absolute left-5 top-0 h-5 w-0.5 bg-gray-200 -z-10"></div>
+                        
+                        <div class="flex-shrink-0 w-10 h-10 bg-white border-2 border-gray-400 rounded-full flex items-center justify-center z-10 text-gray-600 font-bold shadow-sm">4</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">Support</h3>
+                            <p class="mt-2 text-gray-600">Auch nach dem Start lassen wir Sie nicht allein. Wir optimieren laufend und stehen bei Fragen bereit.</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>

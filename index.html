@@ -352,7 +352,7 @@
                 </div>
                 
                 <div class="max-w-2xl mx-auto relative">
-                    <div class="absolute left-5 top-5 h-full w-0.5 bg-gray-200 -z-10" id="process-line"></div>
+                    <div class="absolute left-5 top-5 h-[80%] w-0.5 bg-gradient-to-b from-gray-200 via-gray-200 to-transparent -z-10" id="process-line"></div>
                     <div class="space-y-16">
                         <div class="relative flex items-start process-step">
                             <div class="flex-shrink-0 w-10 h-10 bg-white border-2 border-blue-600 rounded-full flex items-center justify-center z-10 text-blue-600 font-bold shadow-sm">1</div>
@@ -641,22 +641,51 @@
         });
 
         // Form Handling
+        // Form Handling mit echtem n8n Webhook
         document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
+            e.preventDefault(); // Verhindert das Neuladen der Seite
+            
             const btn = document.getElementById('submit-button');
             const spinner = document.getElementById('loading-spinner');
             const formView = document.getElementById('form-view');
             const successView = document.getElementById('success-view');
-
+            
+            // 1. Button deaktivieren & Ladeanimation zeigen
             btn.disabled = true;
             spinner.classList.remove('hidden');
+
+            // 2. Daten aus dem Formular holen
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
             
-            // Simulate API call
-            setTimeout(() => {
-                formView.classList.add('hidden');
-                successView.classList.remove('hidden');
-                // Add actual submission logic here (e.g. Formspree, Zapier webhook)
-            }, 1500);
+            // Checkbox Wert explizit setzen (true/false)
+            data.privacy = document.getElementById('privacy').checked;
+
+            // 3. Daten an n8n senden
+            fetch('https://flowsetagentur.app.n8n.cloud/webhook/formular', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Erfolg: Formular ausblenden, Erfolgsmeldung zeigen
+                    formView.classList.add('hidden');
+                    successView.classList.remove('hidden');
+                } else {
+                    throw new Error('Netzwerkfehler oder Serverfehler');
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('Es gab einen Fehler beim Senden. Bitte versuchen Sie es später erneut oder schreiben Sie uns eine Mail.');
+                
+                // Reset Button bei Fehler
+                btn.disabled = false;
+                spinner.classList.add('hidden');
+            });
         });
         
         // Navbar Scroll Effect

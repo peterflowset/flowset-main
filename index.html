@@ -26,9 +26,10 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- Fonts: Geist (headings) + DM Sans (body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         /* --- CONFIG & VARIABLES --- */
@@ -36,12 +37,20 @@
             --primary-blue: #316bff;
             --primary-dark: #1e40af;
             --glow-color: rgba(49, 107, 255, 0.5);
+            --font-heading: 'Geist', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
         }
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-body);
             background-color: #FFFFFF;
             color: #1F2937;
             overflow-x: hidden;
+        }
+        
+        /* Headings use Space Grotesk */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            letter-spacing: -0.02em;
         }
         
         /* --- UTILITIES --- */
@@ -135,7 +144,13 @@
         #services.is-visible .service-card:nth-child(6) { transition-delay: 350ms; }
 
         /* --- COMPONENT: BUTTONS --- */
-        .cta-button { position: relative; overflow: hidden; transition: all 0.3s ease; }
+        .cta-button { 
+            position: relative; 
+            overflow: hidden; 
+            transition: all 0.3s ease;
+            font-family: var(--font-heading);
+            letter-spacing: 0.01em;
+        }
         .cta-button:hover { transform: translateY(-1px); box-shadow: 0 10px 20px -5px rgba(49, 107, 255, 0.3); }
         
         /* --- COMPONENT: UI ELEMENTS --- */
@@ -192,6 +207,17 @@
         /* FAQ Details Animation */
         details > summary { list-style: none; }
         details > summary::-webkit-details-marker { display: none; }
+        
+        /* Navigation uses heading font */
+        nav a {
+            font-family: var(--font-heading);
+        }
+        
+        /* Badge/Tag styling */
+        .tech-badge {
+            font-family: var(--font-heading);
+            letter-spacing: 0.05em;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -235,10 +261,10 @@
                 <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
                     
                     <div class="lg:w-1/2 text-center lg:text-left fade-in-section">
-                        <div class="inline-block px-4 py-1.5 mb-6 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-sm font-semibold tracking-wide">
+                        <div class="tech-badge inline-block px-4 py-1.5 mb-6 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-sm font-semibold tracking-wide">
                             KI Agentur aus Südtirol
                         </div>
-                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 text-gray-900 leading-[1.1]">
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-gray-900 leading-[1.1]">
                             Wir machen Ihr Unternehmen <span class="gradient-heading">zukunftsfähig.</span>
                         </h1>
                         <p class="text-lg text-gray-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
@@ -248,7 +274,7 @@
                             <a href="#contact" class="cta-button bg-[#316bff] text-white font-bold text-lg px-8 py-4 rounded-xl shadow-lg shadow-blue-500/20 text-center">
                                 Potenzialanalyse anfordern
                             </a>
-                            <a href="#services" class="px-8 py-4 rounded-xl bg-white border border-gray-200 text-gray-700 font-medium hover:bg-gray-50 transition-colors text-center">
+                            <a href="#services" class="px-8 py-4 rounded-xl bg-white border border-gray-200 text-gray-700 font-medium hover:bg-gray-50 transition-colors text-center" style="font-family: var(--font-heading);">
                                 Lösungen ansehen
                             </a>
                         </div>
@@ -300,7 +326,7 @@
                                     </div>
                                     <div>
                                         <p class="text-xs text-gray-500 font-medium">Effizienz</p>
-                                        <p class="text-lg font-bold text-gray-900">+ 40%</p>
+                                        <p class="text-lg font-bold text-gray-900" style="font-family: var(--font-heading);">+ 40%</p>
                                     </div>
                                 </div>
                             </div>
@@ -313,7 +339,7 @@
 
         <section class="py-12 border-y border-gray-100 bg-gray-50/50">
             <div class="container mx-auto px-4 text-center">
-                <p class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-8">Wir arbeiten mit modernster Technologie</p>
+                <p class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-8" style="font-family: var(--font-heading);">Wir arbeiten mit modernster Technologie</p>
                 
                 <div class="max-w-xl mx-auto"> 
                     <div class="logo-container">
@@ -402,7 +428,7 @@
                     <div class="relative flex gap-8 pb-16 process-step">
                         <div class="absolute left-5 top-5 bottom-0 w-0.5 bg-gray-200 -z-10"></div>
                         
-                        <div class="flex-shrink-0 w-10 h-10 bg-white border-2 border-blue-600 rounded-full flex items-center justify-center z-10 text-blue-600 font-bold shadow-sm">1</div>
+                        <div class="flex-shrink-0 w-10 h-10 bg-white border-2 border-blue-600 rounded-full flex items-center justify-center z-10 text-blue-600 font-bold shadow-sm" style="font-family: var(--font-heading);">1</div>
                         <div>
                             <h3 class="text-xl font-bold text-gray-900">Potenzialanalyse (Kostenlos)</h3>
                             <p class="mt-2 text-gray-600">Wir finden heraus, wo in Ihrem Unternehmen Zeit und Geld verbrannt wird und ob sich eine Automatisierung lohnt.</p>
@@ -412,7 +438,7 @@
                     <div class="relative flex gap-8 pb-16 process-step">
                         <div class="absolute left-5 top-0 bottom-0 w-0.5 bg-gray-200 -z-10"></div>
                         
-                        <div class="flex-shrink-0 w-10 h-10 bg-white border-2 border-gray-400 rounded-full flex items-center justify-center z-10 text-gray-600 font-bold shadow-sm">2</div>
+                        <div class="flex-shrink-0 w-10 h-10 bg-white border-2 border-gray-400 rounded-full flex items-center justify-center z-10 text-gray-600 font-bold shadow-sm" style="font-family: var(--font-heading);">2</div>
                         <div>
                             <h3 class="text-xl font-bold text-gray-900">Strategie & Fahrplan</h3>
                             <p class="mt-2 text-gray-600">Sie erhalten ein klares Konzept: Welche Tools nutzen wir? Wie binden wir sie ein? Was kostet es?</p>
@@ -422,7 +448,7 @@
                     <div class="relative flex gap-8 pb-16 process-step">
                         <div class="absolute left-5 top-0 bottom-0 w-0.5 bg-gray-200 -z-10"></div>
                         
-                        <div class="flex-shrink-0 w-10 h-10 bg-white border-2 border-gray-400 rounded-full flex items-center justify-center z-10 text-gray-600 font-bold shadow-sm">3</div>
+                        <div class="flex-shrink-0 w-10 h-10 bg-white border-2 border-gray-400 rounded-full flex items-center justify-center z-10 text-gray-600 font-bold shadow-sm" style="font-family: var(--font-heading);">3</div>
                         <div>
                             <h3 class="text-xl font-bold text-gray-900">Umsetzung</h3>
                             <p class="mt-2 text-gray-600">Wir bauen die Lösung, testen sie ausgiebig und schulen Ihr Team, damit alles reibungslos läuft.</p>
@@ -432,7 +458,7 @@
                     <div class="relative flex gap-8 process-step">
                         <div class="absolute left-5 top-0 h-5 w-0.5 bg-gray-200 -z-10"></div>
                         
-                        <div class="flex-shrink-0 w-10 h-10 bg-white border-2 border-gray-400 rounded-full flex items-center justify-center z-10 text-gray-600 font-bold shadow-sm">4</div>
+                        <div class="flex-shrink-0 w-10 h-10 bg-white border-2 border-gray-400 rounded-full flex items-center justify-center z-10 text-gray-600 font-bold shadow-sm" style="font-family: var(--font-heading);">4</div>
                         <div>
                             <h3 class="text-xl font-bold text-gray-900">Support</h3>
                             <p class="mt-2 text-gray-600">Auch nach dem Start lassen wir Sie nicht allein. Wir optimieren laufend und stehen bei Fragen bereit.</p>
@@ -519,7 +545,7 @@
                             <img src="team/Leon.png" alt="Leon Gitterle" class="rounded-2xl w-40 h-40 object-cover mx-auto shadow-md group-hover:scale-105 transition-transform duration-300">
                         </div>
                         <h4 class="text-xl font-bold text-gray-900">Leon Gitterle</h4>
-                        <p class="text-blue-600 font-medium text-sm uppercase tracking-wide mt-1">Marketing & Strategie</p>
+                        <p class="text-blue-600 font-medium text-sm uppercase tracking-wide mt-1" style="font-family: var(--font-heading);">Marketing & Strategie</p>
                         <a href="mailto:leon@flowset.ai" class="text-gray-400 hover:text-blue-600 text-sm mt-2 inline-block transition-colors">leon@flowset.ai</a>
                     </div>
                     <div class="text-center group">
@@ -527,7 +553,7 @@
                              <img src="team/Peter.png" alt="Peter Kasseroler" class="rounded-2xl w-40 h-40 object-cover mx-auto shadow-md group-hover:scale-105 transition-transform duration-300">
                         </div>
                         <h4 class="text-xl font-bold text-gray-900">Peter Kasseroler</h4>
-                        <p class="text-blue-600 font-medium text-sm uppercase tracking-wide mt-1">Product & Development</p>
+                        <p class="text-blue-600 font-medium text-sm uppercase tracking-wide mt-1" style="font-family: var(--font-heading);">Product & Development</p>
                         <a href="mailto:peter@flowset.ai" class="text-gray-400 hover:text-blue-600 text-sm mt-2 inline-block transition-colors">peter@flowset.ai</a>
                     </div>
                     <div class="text-center group">
@@ -535,7 +561,7 @@
                              <img src="team/David.png" alt="David Peintner" class="rounded-2xl w-40 h-40 object-cover mx-auto shadow-md group-hover:scale-105 transition-transform duration-300">
                         </div>
                         <h4 class="text-xl font-bold text-gray-900">David Peintner</h4>
-                        <p class="text-blue-600 font-medium text-sm uppercase tracking-wide mt-1">Sales & Consulting</p>
+                        <p class="text-blue-600 font-medium text-sm uppercase tracking-wide mt-1" style="font-family: var(--font-heading);">Sales & Consulting</p>
                         <a href="mailto:david@flowset.ai" class="text-gray-400 hover:text-blue-600 text-sm mt-2 inline-block transition-colors">david@flowset.ai</a>
                     </div>
                 </div>

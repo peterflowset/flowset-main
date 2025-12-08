@@ -204,6 +204,60 @@
         #process-line { transform: scaleY(0); transform-origin: top; transition: transform 1s ease-in-out; }
         #process.is-visible #process-line { transform: scaleY(1); }
         
+        /* Process Step Animation - Circle emerges from previous */
+        .process-step-animated {
+            position: relative;
+        }
+        
+        .process-step-animated .step-circle {
+            transform: scale(0) translateY(-80px);
+            opacity: 0;
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                        opacity 0.4s ease;
+        }
+        
+        .process-step-animated.is-visible .step-circle {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+        
+        .process-step-animated .step-content {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        /* Text von links bei ungeraden Steps (1, 3) */
+        .process-step-animated:nth-child(odd) .step-content {
+            transform: translateX(-30px);
+        }
+        
+        .process-step-animated.is-visible .step-content {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        /* Erste Kugel startet von oben, nicht von vorheriger */
+        .process-step-animated:first-child .step-circle {
+            transform: scale(0) translateY(0);
+        }
+        
+        /* Hover effect on circles */
+        .step-circle {
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                        opacity 0.4s ease,
+                        border-color 0.3s ease, 
+                        color 0.3s ease,
+                        background-color 0.3s ease;
+        }
+        
+        .process-step-animated.is-visible:hover .step-circle {
+            transform: scale(1.15) translateY(0);
+            border-color: var(--primary-blue);
+            color: white;
+            background-color: var(--primary-blue);
+        }
+        
         /* FAQ Details Animation */
         details > summary { list-style: none; }
         details > summary::-webkit-details-marker { display: none; }
@@ -423,45 +477,93 @@
                     <p class="text-lg text-gray-600">Transparenz ist uns wichtig. Von der ersten Analyse bis zur laufenden Betreuung.</p>
                 </div>
                 
-                <div class="max-w-2xl mx-auto">
+                <div class="relative max-w-4xl mx-auto">
+                    <!-- Animierte zentrale Linie - beginnt nach erstem Punkt -->
+                    <div class="timeline-line absolute left-1/2 w-0.5 bg-blue-200 transform -translate-x-1/2 hidden md:block" style="top: 72px; height: 0; transition: height 0.6s ease-out;"></div>
+                    <!-- Mobile Linie - beginnt nach erstem Punkt -->
+                    <div class="timeline-line-mobile absolute left-5 w-0.5 bg-blue-200 md:hidden" style="top: 50px; height: 0; transition: height 0.6s ease-out;"></div>
                     
-                    <div class="relative flex gap-8 pb-16 process-step">
-                        <div class="absolute left-5 top-5 bottom-0 w-0.5 bg-gray-200 -z-10"></div>
-                        
-                        <div class="flex-shrink-0 w-10 h-10 bg-white border-2 border-blue-600 rounded-full flex items-center justify-center z-10 text-blue-600 font-bold shadow-sm" style="font-family: var(--font-heading);">1</div>
-                        <div>
+                    <!-- Step 1 - Links -->
+                    <div class="process-step-animated relative flex items-center mb-16 md:mb-24" data-step="1">
+                        <div class="hidden md:block w-1/2 pr-12 text-right step-content">
                             <h3 class="text-xl font-bold text-gray-900">Potenzialanalyse (Kostenlos)</h3>
                             <p class="mt-2 text-gray-600">Wir finden heraus, wo in Ihrem Unternehmen Zeit und Geld verbrannt wird und ob sich eine Automatisierung lohnt.</p>
                         </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 hidden md:flex">
+                            <div class="step-circle w-12 h-12 bg-white border-2 border-blue-600 rounded-full flex items-center justify-center z-10 text-blue-600 font-bold shadow-lg" style="font-family: var(--font-heading);">1</div>
+                        </div>
+                        <div class="hidden md:block w-1/2 pl-12"></div>
+                        
+                        <!-- Mobile Layout -->
+                        <div class="flex md:hidden gap-6 pl-2">
+                            <div class="step-circle flex-shrink-0 w-10 h-10 bg-white border-2 border-blue-600 rounded-full flex items-center justify-center z-10 text-blue-600 font-bold shadow-lg" style="font-family: var(--font-heading);">1</div>
+                            <div class="step-content">
+                                <h3 class="text-xl font-bold text-gray-900">Potenzialanalyse (Kostenlos)</h3>
+                                <p class="mt-2 text-gray-600">Wir finden heraus, wo in Ihrem Unternehmen Zeit und Geld verbrannt wird und ob sich eine Automatisierung lohnt.</p>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="relative flex gap-8 pb-16 process-step">
-                        <div class="absolute left-5 top-0 bottom-0 w-0.5 bg-gray-200 -z-10"></div>
-                        
-                        <div class="flex-shrink-0 w-10 h-10 bg-white border-2 border-gray-400 rounded-full flex items-center justify-center z-10 text-gray-600 font-bold shadow-sm" style="font-family: var(--font-heading);">2</div>
-                        <div>
+                    <!-- Step 2 - Rechts -->
+                    <div class="process-step-animated relative flex items-center mb-16 md:mb-24" data-step="2">
+                        <div class="hidden md:block w-1/2 pr-12"></div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 hidden md:flex">
+                            <div class="step-circle w-12 h-12 bg-white border-2 border-gray-300 rounded-full flex items-center justify-center z-10 text-gray-500 font-bold shadow-lg" style="font-family: var(--font-heading);">2</div>
+                        </div>
+                        <div class="hidden md:block w-1/2 pl-12 text-left step-content">
                             <h3 class="text-xl font-bold text-gray-900">Strategie & Fahrplan</h3>
                             <p class="mt-2 text-gray-600">Sie erhalten ein klares Konzept: Welche Tools nutzen wir? Wie binden wir sie ein? Was kostet es?</p>
                         </div>
-                    </div>
-                    
-                    <div class="relative flex gap-8 pb-16 process-step">
-                        <div class="absolute left-5 top-0 bottom-0 w-0.5 bg-gray-200 -z-10"></div>
                         
-                        <div class="flex-shrink-0 w-10 h-10 bg-white border-2 border-gray-400 rounded-full flex items-center justify-center z-10 text-gray-600 font-bold shadow-sm" style="font-family: var(--font-heading);">3</div>
-                        <div>
-                            <h3 class="text-xl font-bold text-gray-900">Umsetzung</h3>
-                            <p class="mt-2 text-gray-600">Wir bauen die Lösung, testen sie ausgiebig und schulen Ihr Team, damit alles reibungslos läuft.</p>
+                        <!-- Mobile Layout -->
+                        <div class="flex md:hidden gap-6 pl-2">
+                            <div class="step-circle flex-shrink-0 w-10 h-10 bg-white border-2 border-gray-300 rounded-full flex items-center justify-center z-10 text-gray-500 font-bold shadow-lg" style="font-family: var(--font-heading);">2</div>
+                            <div class="step-content">
+                                <h3 class="text-xl font-bold text-gray-900">Strategie & Fahrplan</h3>
+                                <p class="mt-2 text-gray-600">Sie erhalten ein klares Konzept: Welche Tools nutzen wir? Wie binden wir sie ein? Was kostet es?</p>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="relative flex gap-8 process-step">
-                        <div class="absolute left-5 top-0 h-5 w-0.5 bg-gray-200 -z-10"></div>
+                    <!-- Step 3 - Links -->
+                    <div class="process-step-animated relative flex items-center mb-16 md:mb-24" data-step="3">
+                        <div class="hidden md:block w-1/2 pr-12 text-right step-content">
+                            <h3 class="text-xl font-bold text-gray-900">Umsetzung</h3>
+                            <p class="mt-2 text-gray-600">Wir bauen die Lösung, testen sie ausgiebig und schulen Ihr Team, damit alles reibungslos läuft.</p>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 hidden md:flex">
+                            <div class="step-circle w-12 h-12 bg-white border-2 border-gray-300 rounded-full flex items-center justify-center z-10 text-gray-500 font-bold shadow-lg" style="font-family: var(--font-heading);">3</div>
+                        </div>
+                        <div class="hidden md:block w-1/2 pl-12"></div>
                         
-                        <div class="flex-shrink-0 w-10 h-10 bg-white border-2 border-gray-400 rounded-full flex items-center justify-center z-10 text-gray-600 font-bold shadow-sm" style="font-family: var(--font-heading);">4</div>
-                        <div>
+                        <!-- Mobile Layout -->
+                        <div class="flex md:hidden gap-6 pl-2">
+                            <div class="step-circle flex-shrink-0 w-10 h-10 bg-white border-2 border-gray-300 rounded-full flex items-center justify-center z-10 text-gray-500 font-bold shadow-lg" style="font-family: var(--font-heading);">3</div>
+                            <div class="step-content">
+                                <h3 class="text-xl font-bold text-gray-900">Umsetzung</h3>
+                                <p class="mt-2 text-gray-600">Wir bauen die Lösung, testen sie ausgiebig und schulen Ihr Team, damit alles reibungslos läuft.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 4 - Rechts -->
+                    <div class="process-step-animated relative flex items-center" data-step="4">
+                        <div class="hidden md:block w-1/2 pr-12"></div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 hidden md:flex">
+                            <div class="step-circle w-12 h-12 bg-white border-2 border-gray-300 rounded-full flex items-center justify-center z-10 text-gray-500 font-bold shadow-lg" style="font-family: var(--font-heading);">4</div>
+                        </div>
+                        <div class="hidden md:block w-1/2 pl-12 text-left step-content">
                             <h3 class="text-xl font-bold text-gray-900">Support</h3>
                             <p class="mt-2 text-gray-600">Auch nach dem Start lassen wir Sie nicht allein. Wir optimieren laufend und stehen bei Fragen bereit.</p>
+                        </div>
+                        
+                        <!-- Mobile Layout -->
+                        <div class="flex md:hidden gap-6 pl-2">
+                            <div class="step-circle flex-shrink-0 w-10 h-10 bg-white border-2 border-gray-300 rounded-full flex items-center justify-center z-10 text-gray-500 font-bold shadow-lg" style="font-family: var(--font-heading);">4</div>
+                            <div class="step-content">
+                                <h3 class="text-xl font-bold text-gray-900">Support</h3>
+                                <p class="mt-2 text-gray-600">Auch nach dem Start lassen wir Sie nicht allein. Wir optimieren laufend und stehen bei Fragen bereit.</p>
+                            </div>
                         </div>
                     </div>
 
@@ -720,6 +822,45 @@
 
         document.querySelectorAll('.fade-in-section, #services, #process, #contact').forEach(section => {
             observer.observe(section);
+        });
+        
+        // Process Steps Observer - triggers each step sequentially with growing line
+        const processSteps = document.querySelectorAll('.process-step-animated');
+        const timelineLine = document.querySelector('.timeline-line');
+        const timelineLineMobile = document.querySelector('.timeline-line-mobile');
+        const firstStepTop = processSteps[0] ? processSteps[0].offsetTop : 0;
+        let lastVisibleStep = 0;
+        
+        const processObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const step = entry.target;
+                    const stepNum = parseInt(step.dataset.step);
+                    
+                    // Nur animieren wenn vorheriger Step schon sichtbar ist (oder es Step 1 ist)
+                    if (stepNum === 1 || lastVisibleStep >= stepNum - 1) {
+                        step.classList.add('is-visible');
+                        lastVisibleStep = Math.max(lastVisibleStep, stepNum);
+                        
+                        // Linie nur ab Step 2 wachsen lassen (beginnt nach erstem Punkt)
+                        if (stepNum > 1) {
+                            // Linienhöhe = Abstand vom ersten Punkt bis zum aktuellen Punkt
+                            const lineHeight = step.offsetTop - firstStepTop - 24; // 24px = Abstand nach erstem Kreis
+                            
+                            if (timelineLine) {
+                                timelineLine.style.height = lineHeight + 'px';
+                            }
+                            if (timelineLineMobile) {
+                                timelineLineMobile.style.height = lineHeight + 'px';
+                            }
+                        }
+                    }
+                }
+            });
+        }, { threshold: 0.5, rootMargin: '0px 0px -50px 0px' });
+
+        processSteps.forEach(step => {
+            processObserver.observe(step);
         });
 
         // Form Handling

@@ -26,10 +26,10 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Fonts: Geist (headings) + DM Sans (body) -->
+    <!-- Fonts: DM Sans for headings and body -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         /* --- CONFIG & VARIABLES --- */
@@ -37,7 +37,7 @@
             --primary-blue: #316bff;
             --primary-dark: #1e40af;
             --glow-color: rgba(49, 107, 255, 0.5);
-            --font-heading: 'Geist', sans-serif;
+            --font-heading: 'DM Sans', sans-serif;
             --font-body: 'DM Sans', sans-serif;
         }
         body {
@@ -480,8 +480,8 @@
                 <div class="relative max-w-4xl mx-auto">
                     <!-- Animierte zentrale Linie - beginnt nach erstem Punkt -->
                     <div class="timeline-line absolute left-1/2 w-0.5 bg-blue-200 transform -translate-x-1/2 hidden md:block" style="top: 72px; height: 0; transition: height 0.6s ease-out;"></div>
-                    <!-- Mobile Linie - beginnt nach erstem Punkt -->
-                    <div class="timeline-line-mobile absolute left-5 w-0.5 bg-blue-200 md:hidden" style="top: 50px; height: 0; transition: height 0.6s ease-out;"></div>
+                    <!-- Mobile Linie - beginnt nach erstem Punkt, zentriert zum Kreis (pl-2 + halbe Kreisbreite = 8px + 20px = 28px) -->
+                    <div class="timeline-line-mobile absolute w-0.5 bg-blue-200 md:hidden" style="left: 28px; top: 50px; height: 0; transition: height 0.6s ease-out;"></div>
                     
                     <!-- Step 1 - Links -->
                     <div class="process-step-animated relative flex items-center mb-16 md:mb-24" data-step="1">

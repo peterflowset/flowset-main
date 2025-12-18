@@ -6,7 +6,7 @@
     
     <title>KI Agentur Südtirol | flowset | Automatisierung & Digitalisierung</title>
     <script type="text/javascript" src="//embeds.iubenda.com/widgets/94e52fbf-8d4a-4481-bd84-64be34457158.js"></script>
-    <meta name="description" content="Wir machen Ihr Unternehmen zukunftsfähig. flowset automatisiert Prozesse und steigert Effizienz mit modernster KI. Jetzt Potenzialanalyse anfordern.">
+    <meta name="description" content="Wir machen Südtiroler Unternehmen zukunftsfähig. flowset automatisiert Prozesse und steigert Effizienz mit modernster KI. Jetzt Potenzialanalyse anfordern.">
 
     <link rel="icon" type="image/png" href="logos/icon.png">
 
@@ -31,19 +31,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,300,400&display=swap" rel="stylesheet">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Satoshi', 'sans-serif'],
-                    },
-                },
-            },
-        }
-    </script>
-
     <style>
         /* --- CONFIG & VARIABLES --- */
         :root {
@@ -57,7 +44,7 @@
             color: #1F2937;
             overflow-x: hidden;
         }
-        
+
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Satoshi', sans-serif !important;
         }
@@ -153,13 +140,7 @@
         #services.is-visible .service-card:nth-child(6) { transition-delay: 350ms; }
 
         /* --- COMPONENT: BUTTONS --- */
-        .cta-button { 
-            position: relative; 
-            overflow: hidden; 
-            transition: all 0.3s ease;
-            font-family: var(--font-heading);
-            letter-spacing: 0.01em;
-        }
+        .cta-button { position: relative; overflow: hidden; transition: all 0.3s ease; }
         .cta-button:hover { transform: translateY(-1px); box-shadow: 0 10px 20px -5px rgba(49, 107, 255, 0.3); }
         
         /* --- COMPONENT: UI ELEMENTS --- */
@@ -212,7 +193,7 @@
         /* Process Line */
         #process-line {
             position: absolute;
-            left: 1.25rem;
+            left: 1.25rem; /* Matches left-5 */
             width: 2px;
             background-color: #e5e7eb;
             z-index: -10;
@@ -220,7 +201,7 @@
 
         .scrolling-dot {
             position: absolute;
-            left: 1.25rem;
+            left: 1.25rem; /* Matches left-5 */
             width: 12px;
             height: 12px;
             background-color: #316bff;
@@ -246,20 +227,10 @@
             color: #316bff;
         }
         
+        
         /* FAQ Details Animation */
         details > summary { list-style: none; }
         details > summary::-webkit-details-marker { display: none; }
-        
-        /* Navigation uses heading font */
-        nav a {
-            font-family: var(--font-heading);
-        }
-        
-        /* Badge/Tag styling */
-        .tech-badge {
-            font-family: var(--font-heading);
-            letter-spacing: 0.05em;
-        }
     </style>
 </head>
 <body class="antialiased">
@@ -303,20 +274,20 @@
                 <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
                     
                     <div class="lg:w-1/2 text-center lg:text-left fade-in-section">
-                        <div class="tech-badge inline-block px-4 py-1.5 mb-6 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-sm font-semibold tracking-wide">
+                        <div class="inline-block px-4 py-1.5 mb-6 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-sm font-semibold tracking-wide">
                             KI Agentur aus Südtirol
                         </div>
                         <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6 text-gray-900 leading-[1.1]">
                             Wir machen <span class="text-blue-600">Ihr Unternehmen</span> <span class="gradient-heading">zukunftsfähig.</span>
                         </h1>
                         <p class="text-lg text-gray-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                            Weniger manueller Aufwand, mehr Zeit für das Wesentliche. Wir digitalisieren und automatisieren Ihre Prozesse.
+                            Weniger manueller Aufwand, mehr Zeit für das Wesentliche. Wir digitalisieren und automatisieren Ihre Prozesse – persönlich, lokal und verständlich.
                         </p>
                         <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                             <a href="#contact" class="cta-button bg-[#316bff] text-white font-bold text-lg px-8 py-4 rounded-xl shadow-lg shadow-blue-500/20 text-center">
                                 Potenzialanalyse anfordern
                             </a>
-                            <a href="#services" class="px-8 py-4 rounded-xl bg-white border border-gray-200 text-gray-700 font-medium hover:bg-gray-50 transition-colors text-center" style="font-family: var(--font-heading);">
+                            <a href="#services" class="px-8 py-4 rounded-xl bg-white border border-gray-200 text-gray-700 font-medium hover:bg-gray-50 transition-colors text-center">
                                 Lösungen ansehen
                             </a>
                         </div>
@@ -368,7 +339,7 @@
                                     </div>
                                     <div>
                                         <p class="text-xs text-gray-500 font-medium">Effizienz</p>
-                                        <p class="text-lg font-bold text-gray-900" style="font-family: var(--font-heading);">+ 40%</p>
+                                        <p class="text-lg font-bold text-gray-900">+ 40%</p>
                                     </div>
                                 </div>
                             </div>
@@ -381,7 +352,7 @@
 
         <section class="py-12 border-y border-gray-100 bg-gray-50/50">
             <div class="container mx-auto px-4 text-center">
-                <p class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-8" style="font-family: var(--font-heading);">Wir arbeiten mit modernster Technologie</p>
+                <p class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-8">Wir arbeiten mit modernster Technologie</p>
                 
                 <div class="max-w-xl mx-auto"> 
                     <div class="logo-container">
@@ -416,43 +387,7 @@
             </div>
         </section>
 
-<<<<<<< HEAD
-        <section id="services" class="py-16 sm:py-20 md:py-28 fade-in-section">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="text-center max-w-3xl mx-auto">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Unsere maßgeschneiderten KI-Lösungen</h2>
-                </div>
-                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
-                    <div class="service-card rounded-xl p-8 flex flex-col md:col-span-1 lg:col-span-2">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Maßgeschneidertes CRM mit smarten Automationen</h3>
-                        <p class="text-gray-600">Unser KI-unterstütztes CRM sammelt Leads automatisch aus verschiedenen Portalen und speichert sie zentral. Smarte Automationen sorgen dafür, dass kein Kontakt verloren geht, Follow-ups automatisch erfolgen und alle wichtigen Informationen immer griffbereit sind – für einen reibungslosen und effizienten Vertriebsprozess.</p>
-                    </div>
-                    <div class="service-card rounded-xl p-8 flex flex-col md:col-span-1 lg:col-span-2">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Automatisierte Lead-Generierung & -Recherche</h3>
-                        <p class="text-gray-600">Eingehende Leads werden automatisch recherchiert, mit relevanten Daten angereichert und vorqualifiziert. So landet nur das Beste im CRM – perfekt vorbereitet für Ihr Vertriebsteam, das sich direkt auf den Abschluss konzentrieren kann.</p>
-                    </div>
-                    <div class="service-card rounded-xl p-8 flex flex-col md:col-span-2 lg:col-span-2">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-3">KI-unterstütztes Recruiting</h3>
-                        <p class="text-gray-600">Bewerbungen werden automatisch analysiert, bewertet und nach Ihren Kriterien sortiert. So stellen Sie sicher, dass starke Kandidaten nicht in der Masse untergehen – und der Auswahlprozess wird schneller, präziser und effizienter.</p>
-                    </div>
-                    <div class="service-card rounded-xl p-8 flex flex-col md:col-span-1 lg:col-start-2 lg:col-span-2">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Intelligente Support-Chatbots</h3>
-                        <p class="text-gray-600">Mit Zugriff auf Ihr gesamtes Unternehmenswissen beantworten Chatbots bis zu 80 % aller Standardanfragen sofort und leiten komplexe Fälle direkt an den richtigen Ansprechpartner weiter. Das entlastet Ihr Team und sorgt für schnellen, reibungslosen Kundenservice – rund um die Uhr.</p>
-                    </div>
-                    <div class="service-card rounded-xl p-8 flex flex-col md:col-span-1 lg:col-span-2">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-3">KI-Videos</h3>
-                        <p class="text-gray-600">Aus Fotos werden realistische Videos: Unsere KI verwandelt statische Bilder in lebendige, professionelle Videosequenzen. Perfekt für Marketing, Social Media und Präsentationen – in wenigen Minuten statt Stunden.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <div class="w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent my-8"></div>
-
-        <section id="process" class="py-16 sm:py-20 md:py-28 fade-in-section">
-=======
         <section id="services" class="py-20 lg:py-32 fade-in-section">
->>>>>>> 796e24e2887ecc08d38b88b6324ae48f1ea364be
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto mb-20">
                     <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">Maßgeschneiderte Lösungen</h2>
@@ -507,6 +442,7 @@
 
                     <div class="relative flex gap-8 pb-16 process-step" data-step="1">
                         <div class="flex-shrink-0 w-10 h-10 relative">
+                            <!-- Step anchor -->
                             <div class="absolute left-1.25rem top-5 w-1 h-1 -translate-x-1/2 -translate-y-1/2 step-anchor"></div>
                         </div>
                         <div>
@@ -517,6 +453,7 @@
 
                     <div class="relative flex gap-8 pb-16 process-step" data-step="2">
                         <div class="flex-shrink-0 w-10 h-10 relative">
+                            <!-- Step anchor -->
                             <div class="absolute left-1.25rem top-5 w-1 h-1 -translate-x-1/2 -translate-y-1/2 step-anchor"></div>
                         </div>
                         <div>
@@ -527,6 +464,7 @@
 
                     <div class="relative flex gap-8 pb-16 process-step" data-step="3">
                         <div class="flex-shrink-0 w-10 h-10 relative">
+                            <!-- Step anchor -->
                             <div class="absolute left-1.25rem top-5 w-1 h-1 -translate-x-1/2 -translate-y-1/2 step-anchor"></div>
                         </div>
                         <div>
@@ -537,6 +475,7 @@
 
                     <div class="relative flex gap-8 process-step" data-step="4">
                         <div class="flex-shrink-0 w-10 h-10 relative">
+                            <!-- Step anchor -->
                             <div class="absolute left-1.25rem top-5 w-1 h-1 -translate-x-1/2 -translate-y-1/2 step-anchor"></div>
                         </div>
                         <div>
@@ -625,7 +564,7 @@
                             <img src="team/Leon.png" alt="Leon Gitterle" class="rounded-2xl w-40 h-40 object-cover mx-auto shadow-md group-hover:scale-105 transition-transform duration-300">
                         </div>
                         <h4 class="text-xl font-bold text-gray-900">Leon Gitterle</h4>
-                        <p class="text-blue-600 font-medium text-sm uppercase tracking-wide mt-1" style="font-family: var(--font-heading);">Marketing & Strategie</p>
+                        <p class="text-blue-600 font-medium text-sm uppercase tracking-wide mt-1">Marketing & Strategie</p>
                         <a href="mailto:leon@flowset.ai" class="text-gray-400 hover:text-blue-600 text-sm mt-2 inline-block transition-colors">leon@flowset.ai</a>
                     </div>
                     <div class="text-center group">
@@ -633,7 +572,7 @@
                              <img src="team/Peter.png" alt="Peter Kasseroler" class="rounded-2xl w-40 h-40 object-cover mx-auto shadow-md group-hover:scale-105 transition-transform duration-300">
                         </div>
                         <h4 class="text-xl font-bold text-gray-900">Peter Kasseroler</h4>
-                        <p class="text-blue-600 font-medium text-sm uppercase tracking-wide mt-1" style="font-family: var(--font-heading);">Product & Development</p>
+                        <p class="text-blue-600 font-medium text-sm uppercase tracking-wide mt-1">Product & Development</p>
                         <a href="mailto:peter@flowset.ai" class="text-gray-400 hover:text-blue-600 text-sm mt-2 inline-block transition-colors">peter@flowset.ai</a>
                     </div>
                     <div class="text-center group">
@@ -641,7 +580,7 @@
                              <img src="team/David.png" alt="David Peintner" class="rounded-2xl w-40 h-40 object-cover mx-auto shadow-md group-hover:scale-105 transition-transform duration-300">
                         </div>
                         <h4 class="text-xl font-bold text-gray-900">David Peintner</h4>
-                        <p class="text-blue-600 font-medium text-sm uppercase tracking-wide mt-1" style="font-family: var(--font-heading);">Sales & Consulting</p>
+                        <p class="text-blue-600 font-medium text-sm uppercase tracking-wide mt-1">Sales & Consulting</p>
                         <a href="mailto:david@flowset.ai" class="text-gray-400 hover:text-blue-600 text-sm mt-2 inline-block transition-colors">david@flowset.ai</a>
                     </div>
                 </div>
@@ -801,7 +740,7 @@
         document.querySelectorAll('.fade-in-section, #services, #process, #contact').forEach(section => {
             observer.observe(section);
         });
-        
+
         // Process Animation
         const processSection = document.getElementById('process');
         const scrollingDot = document.getElementById('scrolling-dot');
@@ -814,6 +753,7 @@
             const windowHeight = window.innerHeight;
             const centerPoint = windowHeight / 2;
 
+            // Get first and last step anchors to define line start/end
             const firstStep = processSteps[0];
             const lastStep = processSteps[processSteps.length - 1];
             const firstAnchor = firstStep.querySelector('.step-anchor');
@@ -822,32 +762,37 @@
             const firstRect = firstAnchor.getBoundingClientRect();
             const lastRect = lastAnchor.getBoundingClientRect();
 
-            const lineTop = firstRect.top - containerRect.top + 2; // Offset for centering
-            const lineBottom = lastRect.top - containerRect.top + 2;
+            // Position the line
+            const lineTop = firstRect.top - containerRect.top + firstRect.height / 2;
+            const lineBottom = lastRect.top - containerRect.top + lastRect.height / 2;
             processLine.style.top = `${lineTop}px`;
             processLine.style.height = `${lineBottom - lineTop}px`;
 
+            // Calculate dot position based on scroll
             let dotYInViewport = centerPoint;
             let dotYInContainer = dotYInViewport - containerRect.top;
             
+            // Clamp dot to line
             dotYInContainer = Math.max(lineTop, Math.min(lineBottom, dotYInContainer));
             
             scrollingDot.style.top = `${dotYInContainer}px`;
             scrollingDot.style.transform = `translate(-50%, -50%)`;
 
+            // Show dot only when section is somewhat visible
             if (containerRect.top < windowHeight && containerRect.bottom > 0) {
                 scrollingDot.style.opacity = '1';
             } else {
                 scrollingDot.style.opacity = '0';
             }
 
+            // Highlight active step only when dot is directly across from it
             processSteps.forEach((step) => {
                 const anchor = step.querySelector('.step-anchor');
                 const anchorRect = anchor.getBoundingClientRect();
                 const anchorCenter = anchorRect.top + anchorRect.height / 2;
                 
                 const distance = Math.abs(anchorCenter - centerPoint);
-                if (distance < 50) {
+                if (distance < 50) { // Threshold for "being across"
                     step.classList.add('active');
                 } else {
                     step.classList.remove('active');
@@ -857,12 +802,14 @@
 
         window.addEventListener('scroll', updateProcessAnimation);
         window.addEventListener('resize', updateProcessAnimation);
+        // Initial call after a short delay to ensure layout is ready
         setTimeout(updateProcessAnimation, 100);
 
+        // Trigger animation when section is visible
         const processObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    updateProcessAnimation();
+                    updateDotPosition();
                 }
             });
         }, { threshold: 0.1 });

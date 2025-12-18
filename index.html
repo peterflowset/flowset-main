@@ -26,10 +26,23 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Fonts: DM Sans for headings and body -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,300,400&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Satoshi', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
 
     <style>
         /* --- CONFIG & VARIABLES --- */
@@ -37,20 +50,16 @@
             --primary-blue: #316bff;
             --primary-dark: #1e40af;
             --glow-color: rgba(49, 107, 255, 0.5);
-            --font-heading: 'DM Sans', sans-serif;
-            --font-body: 'DM Sans', sans-serif;
         }
         body {
-            font-family: var(--font-body);
+            font-family: 'Inter', sans-serif;
             background-color: #FFFFFF;
             color: #1F2937;
             overflow-x: hidden;
         }
         
-        /* Headings use Space Grotesk */
         h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-heading);
-            letter-spacing: -0.02em;
+            font-family: 'Satoshi', sans-serif !important;
         }
         
         /* --- UTILITIES --- */
@@ -201,61 +210,40 @@
         }
         
         /* Process Line */
-        #process-line { transform: scaleY(0); transform-origin: top; transition: transform 1s ease-in-out; }
-        #process.is-visible #process-line { transform: scaleY(1); }
-        
-        /* Process Step Animation - Circle emerges from previous */
-        .process-step-animated {
-            position: relative;
+        #process-line {
+            position: absolute;
+            left: 1.25rem;
+            width: 2px;
+            background-color: #e5e7eb;
+            z-index: -10;
         }
-        
-        .process-step-animated .step-circle {
-            transform: scale(0) translateY(-80px);
+
+        .scrolling-dot {
+            position: absolute;
+            left: 1.25rem;
+            width: 12px;
+            height: 12px;
+            background-color: #316bff;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 20;
+            box-shadow: 0 0 15px rgba(49, 107, 255, 0.6);
             opacity: 0;
-            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), 
-                        opacity 0.4s ease;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
         }
-        
-        .process-step-animated.is-visible .step-circle {
-            transform: scale(1) translateY(0);
+        #process.is-visible .scrolling-dot {
             opacity: 1;
         }
-        
-        .process-step-animated .step-content {
-            opacity: 0;
-            transform: translateX(30px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
+
+        .process-step {
+            transition: all 0.5s ease;
         }
-        
-        /* Text von links bei ungeraden Steps (1, 3) */
-        .process-step-animated:nth-child(odd) .step-content {
-            transform: translateX(-30px);
+        .process-step.active {
+            transform: translateX(10px);
         }
-        
-        .process-step-animated.is-visible .step-content {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        /* Erste Kugel startet von oben, nicht von vorheriger */
-        .process-step-animated:first-child .step-circle {
-            transform: scale(0) translateY(0);
-        }
-        
-        /* Hover effect on circles */
-        .step-circle {
-            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), 
-                        opacity 0.4s ease,
-                        border-color 0.3s ease, 
-                        color 0.3s ease,
-                        background-color 0.3s ease;
-        }
-        
-        .process-step-animated.is-visible:hover .step-circle {
-            transform: scale(1.15) translateY(0);
-            border-color: var(--primary-blue);
-            color: white;
-            background-color: var(--primary-blue);
+        .process-step.active h3 {
+            color: #316bff;
         }
         
         /* FAQ Details Animation */
@@ -318,8 +306,8 @@
                         <div class="tech-badge inline-block px-4 py-1.5 mb-6 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-sm font-semibold tracking-wide">
                             KI Agentur aus Südtirol
                         </div>
-                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-gray-900 leading-[1.1]">
-                            Wir machen Ihr Unternehmen <span class="gradient-heading">zukunftsfähig.</span>
+                        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6 text-gray-900 leading-[1.1]">
+                            Wir machen <span class="text-blue-600">Ihr Unternehmen</span> <span class="gradient-heading">zukunftsfähig.</span>
                         </h1>
                         <p class="text-lg text-gray-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
                             Weniger manueller Aufwand, mehr Zeit für das Wesentliche. Wir digitalisieren und automatisieren Ihre Prozesse.
@@ -513,93 +501,47 @@
                     <p class="text-lg text-gray-600">Transparenz ist uns wichtig. Von der ersten Analyse bis zur laufenden Betreuung.</p>
                 </div>
                 
-                <div class="relative max-w-4xl mx-auto">
-                    <!-- Animierte zentrale Linie - beginnt nach erstem Punkt -->
-                    <div class="timeline-line absolute left-1/2 w-0.5 bg-blue-200 transform -translate-x-1/2 hidden md:block" style="top: 72px; height: 0; transition: height 0.6s ease-out;"></div>
-                    <!-- Mobile Linie - beginnt nach erstem Punkt, zentriert zum Kreis (pl-2 + halbe Kreisbreite = 8px + 20px = 28px) -->
-                    <div class="timeline-line-mobile absolute w-0.5 bg-blue-200 md:hidden" style="left: 28px; top: 50px; height: 0; transition: height 0.6s ease-out;"></div>
-                    
-                    <!-- Step 1 - Links -->
-                    <div class="process-step-animated relative flex items-center mb-16 md:mb-24" data-step="1">
-                        <div class="hidden md:block w-1/2 pr-12 text-right step-content">
+                <div class="max-w-2xl mx-auto relative" id="process-container">
+                    <div id="process-line"></div>
+                    <div class="scrolling-dot" id="scrolling-dot"></div>
+
+                    <div class="relative flex gap-8 pb-16 process-step" data-step="1">
+                        <div class="flex-shrink-0 w-10 h-10 relative">
+                            <div class="absolute left-1.25rem top-5 w-1 h-1 -translate-x-1/2 -translate-y-1/2 step-anchor"></div>
+                        </div>
+                        <div>
                             <h3 class="text-xl font-bold text-gray-900">Potenzialanalyse (Kostenlos)</h3>
                             <p class="mt-2 text-gray-600">Wir finden heraus, wo in Ihrem Unternehmen Zeit und Geld verbrannt wird und ob sich eine Automatisierung lohnt.</p>
                         </div>
-                        <div class="absolute left-1/2 transform -translate-x-1/2 hidden md:flex">
-                            <div class="step-circle w-12 h-12 bg-white border-2 border-blue-600 rounded-full flex items-center justify-center z-10 text-blue-600 font-bold shadow-lg" style="font-family: var(--font-heading);">1</div>
-                        </div>
-                        <div class="hidden md:block w-1/2 pl-12"></div>
-                        
-                        <!-- Mobile Layout -->
-                        <div class="flex md:hidden gap-6 pl-2">
-                            <div class="step-circle flex-shrink-0 w-10 h-10 bg-white border-2 border-blue-600 rounded-full flex items-center justify-center z-10 text-blue-600 font-bold shadow-lg" style="font-family: var(--font-heading);">1</div>
-                            <div class="step-content">
-                                <h3 class="text-xl font-bold text-gray-900">Potenzialanalyse (Kostenlos)</h3>
-                                <p class="mt-2 text-gray-600">Wir finden heraus, wo in Ihrem Unternehmen Zeit und Geld verbrannt wird und ob sich eine Automatisierung lohnt.</p>
-                            </div>
-                        </div>
                     </div>
-                    
-                    <!-- Step 2 - Rechts -->
-                    <div class="process-step-animated relative flex items-center mb-16 md:mb-24" data-step="2">
-                        <div class="hidden md:block w-1/2 pr-12"></div>
-                        <div class="absolute left-1/2 transform -translate-x-1/2 hidden md:flex">
-                            <div class="step-circle w-12 h-12 bg-white border-2 border-gray-300 rounded-full flex items-center justify-center z-10 text-gray-500 font-bold shadow-lg" style="font-family: var(--font-heading);">2</div>
+
+                    <div class="relative flex gap-8 pb-16 process-step" data-step="2">
+                        <div class="flex-shrink-0 w-10 h-10 relative">
+                            <div class="absolute left-1.25rem top-5 w-1 h-1 -translate-x-1/2 -translate-y-1/2 step-anchor"></div>
                         </div>
-                        <div class="hidden md:block w-1/2 pl-12 text-left step-content">
+                        <div>
                             <h3 class="text-xl font-bold text-gray-900">Strategie & Fahrplan</h3>
                             <p class="mt-2 text-gray-600">Sie erhalten ein klares Konzept: Welche Tools nutzen wir? Wie binden wir sie ein? Was kostet es?</p>
                         </div>
-                        
-                        <!-- Mobile Layout -->
-                        <div class="flex md:hidden gap-6 pl-2">
-                            <div class="step-circle flex-shrink-0 w-10 h-10 bg-white border-2 border-gray-300 rounded-full flex items-center justify-center z-10 text-gray-500 font-bold shadow-lg" style="font-family: var(--font-heading);">2</div>
-                            <div class="step-content">
-                                <h3 class="text-xl font-bold text-gray-900">Strategie & Fahrplan</h3>
-                                <p class="mt-2 text-gray-600">Sie erhalten ein klares Konzept: Welche Tools nutzen wir? Wie binden wir sie ein? Was kostet es?</p>
-                            </div>
-                        </div>
                     </div>
-                    
-                    <!-- Step 3 - Links -->
-                    <div class="process-step-animated relative flex items-center mb-16 md:mb-24" data-step="3">
-                        <div class="hidden md:block w-1/2 pr-12 text-right step-content">
+
+                    <div class="relative flex gap-8 pb-16 process-step" data-step="3">
+                        <div class="flex-shrink-0 w-10 h-10 relative">
+                            <div class="absolute left-1.25rem top-5 w-1 h-1 -translate-x-1/2 -translate-y-1/2 step-anchor"></div>
+                        </div>
+                        <div>
                             <h3 class="text-xl font-bold text-gray-900">Umsetzung</h3>
                             <p class="mt-2 text-gray-600">Wir bauen die Lösung, testen sie ausgiebig und schulen Ihr Team, damit alles reibungslos läuft.</p>
                         </div>
-                        <div class="absolute left-1/2 transform -translate-x-1/2 hidden md:flex">
-                            <div class="step-circle w-12 h-12 bg-white border-2 border-gray-300 rounded-full flex items-center justify-center z-10 text-gray-500 font-bold shadow-lg" style="font-family: var(--font-heading);">3</div>
-                        </div>
-                        <div class="hidden md:block w-1/2 pl-12"></div>
-                        
-                        <!-- Mobile Layout -->
-                        <div class="flex md:hidden gap-6 pl-2">
-                            <div class="step-circle flex-shrink-0 w-10 h-10 bg-white border-2 border-gray-300 rounded-full flex items-center justify-center z-10 text-gray-500 font-bold shadow-lg" style="font-family: var(--font-heading);">3</div>
-                            <div class="step-content">
-                                <h3 class="text-xl font-bold text-gray-900">Umsetzung</h3>
-                                <p class="mt-2 text-gray-600">Wir bauen die Lösung, testen sie ausgiebig und schulen Ihr Team, damit alles reibungslos läuft.</p>
-                            </div>
-                        </div>
                     </div>
-                    
-                    <!-- Step 4 - Rechts -->
-                    <div class="process-step-animated relative flex items-center" data-step="4">
-                        <div class="hidden md:block w-1/2 pr-12"></div>
-                        <div class="absolute left-1/2 transform -translate-x-1/2 hidden md:flex">
-                            <div class="step-circle w-12 h-12 bg-white border-2 border-gray-300 rounded-full flex items-center justify-center z-10 text-gray-500 font-bold shadow-lg" style="font-family: var(--font-heading);">4</div>
+
+                    <div class="relative flex gap-8 process-step" data-step="4">
+                        <div class="flex-shrink-0 w-10 h-10 relative">
+                            <div class="absolute left-1.25rem top-5 w-1 h-1 -translate-x-1/2 -translate-y-1/2 step-anchor"></div>
                         </div>
-                        <div class="hidden md:block w-1/2 pl-12 text-left step-content">
+                        <div>
                             <h3 class="text-xl font-bold text-gray-900">Support</h3>
                             <p class="mt-2 text-gray-600">Auch nach dem Start lassen wir Sie nicht allein. Wir optimieren laufend und stehen bei Fragen bereit.</p>
-                        </div>
-                        
-                        <!-- Mobile Layout -->
-                        <div class="flex md:hidden gap-6 pl-2">
-                            <div class="step-circle flex-shrink-0 w-10 h-10 bg-white border-2 border-gray-300 rounded-full flex items-center justify-center z-10 text-gray-500 font-bold shadow-lg" style="font-family: var(--font-heading);">4</div>
-                            <div class="step-content">
-                                <h3 class="text-xl font-bold text-gray-900">Support</h3>
-                                <p class="mt-2 text-gray-600">Auch nach dem Start lassen wir Sie nicht allein. Wir optimieren laufend und stehen bei Fragen bereit.</p>
-                            </div>
                         </div>
                     </div>
 
@@ -860,44 +802,72 @@
             observer.observe(section);
         });
         
-        // Process Steps Observer - triggers each step sequentially with growing line
-        const processSteps = document.querySelectorAll('.process-step-animated');
-        const timelineLine = document.querySelector('.timeline-line');
-        const timelineLineMobile = document.querySelector('.timeline-line-mobile');
-        const firstStepTop = processSteps[0] ? processSteps[0].offsetTop : 0;
-        let lastVisibleStep = 0;
-        
+        // Process Animation
+        const processSection = document.getElementById('process');
+        const scrollingDot = document.getElementById('scrolling-dot');
+        const processSteps = document.querySelectorAll('.process-step');
+        const processContainer = document.getElementById('process-container');
+        const processLine = document.getElementById('process-line');
+
+        function updateProcessAnimation() {
+            const containerRect = processContainer.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            const centerPoint = windowHeight / 2;
+
+            const firstStep = processSteps[0];
+            const lastStep = processSteps[processSteps.length - 1];
+            const firstAnchor = firstStep.querySelector('.step-anchor');
+            const lastAnchor = lastStep.querySelector('.step-anchor');
+            
+            const firstRect = firstAnchor.getBoundingClientRect();
+            const lastRect = lastAnchor.getBoundingClientRect();
+
+            const lineTop = firstRect.top - containerRect.top + 2; // Offset for centering
+            const lineBottom = lastRect.top - containerRect.top + 2;
+            processLine.style.top = `${lineTop}px`;
+            processLine.style.height = `${lineBottom - lineTop}px`;
+
+            let dotYInViewport = centerPoint;
+            let dotYInContainer = dotYInViewport - containerRect.top;
+            
+            dotYInContainer = Math.max(lineTop, Math.min(lineBottom, dotYInContainer));
+            
+            scrollingDot.style.top = `${dotYInContainer}px`;
+            scrollingDot.style.transform = `translate(-50%, -50%)`;
+
+            if (containerRect.top < windowHeight && containerRect.bottom > 0) {
+                scrollingDot.style.opacity = '1';
+            } else {
+                scrollingDot.style.opacity = '0';
+            }
+
+            processSteps.forEach((step) => {
+                const anchor = step.querySelector('.step-anchor');
+                const anchorRect = anchor.getBoundingClientRect();
+                const anchorCenter = anchorRect.top + anchorRect.height / 2;
+                
+                const distance = Math.abs(anchorCenter - centerPoint);
+                if (distance < 50) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateProcessAnimation);
+        window.addEventListener('resize', updateProcessAnimation);
+        setTimeout(updateProcessAnimation, 100);
+
         const processObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const step = entry.target;
-                    const stepNum = parseInt(step.dataset.step);
-                    
-                    // Nur animieren wenn vorheriger Step schon sichtbar ist (oder es Step 1 ist)
-                    if (stepNum === 1 || lastVisibleStep >= stepNum - 1) {
-                        step.classList.add('is-visible');
-                        lastVisibleStep = Math.max(lastVisibleStep, stepNum);
-                        
-                        // Linie nur ab Step 2 wachsen lassen (beginnt nach erstem Punkt)
-                        if (stepNum > 1) {
-                            // Linienhöhe = Abstand vom ersten Punkt bis zum aktuellen Punkt
-                            const lineHeight = step.offsetTop - firstStepTop - 24; // 24px = Abstand nach erstem Kreis
-                            
-                            if (timelineLine) {
-                                timelineLine.style.height = lineHeight + 'px';
-                            }
-                            if (timelineLineMobile) {
-                                timelineLineMobile.style.height = lineHeight + 'px';
-                            }
-                        }
-                    }
+                    updateProcessAnimation();
                 }
             });
-        }, { threshold: 0.5, rootMargin: '0px 0px -50px 0px' });
+        }, { threshold: 0.1 });
 
-        processSteps.forEach(step => {
-            processObserver.observe(step);
-        });
+        processObserver.observe(processSection);
 
         // Form Handling
         // Form Handling mit echtem n8n Webhook

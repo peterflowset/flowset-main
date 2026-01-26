@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Manrope", ui-sans-serif, system-ui, sans-serif;
+
+  --color-brand-50: oklch(0.97 0.02 255);
+  --color-brand-100: oklch(0.93 0.04 255);
+  --color-brand-200: oklch(0.88 0.08 255);
+  --color-brand-300: oklch(0.78 0.12 255);
+  --color-brand-400: oklch(0.68 0.16 255);
+  --color-brand-500: oklch(0.55 0.22 255);
+  --color-brand-600: oklch(0.48 0.22 255);
+  --color-brand-700: oklch(0.42 0.20 255);
+  --color-brand-800: oklch(0.35 0.16 255);
+  --color-brand-900: oklch(0.28 0.12 255);
+
+  --color-slate-50: oklch(0.98 0.005 240);
+  --color-slate-100: oklch(0.96 0.01 240);
+  --color-slate-200: oklch(0.92 0.01 240);
+  --color-slate-300: oklch(0.85 0.02 240);
+  --color-slate-400: oklch(0.75 0.02 240);
+  --color-slate-500: oklch(0.65 0.02 240);
+  --color-slate-600: oklch(0.55 0.02 240);
+  --color-slate-700: oklch(0.45 0.02 240);
+  --color-slate-800: oklch(0.35 0.02 240);
+  --color-slate-900: oklch(0.25 0.02 240);
+  --color-slate-950: oklch(0.15 0.01 240);
+
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2.5rem;
+}
+
+@layer base {
+  :root {
+    --background: var(--color-slate-50);
+    --foreground: var(--color-slate-950);
+    --primary: var(--color-brand-500);
+    --border: var(--color-slate-200);
+  }
+
+  * {
+    @apply border-slate-200;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-950 antialiased;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  }
+}

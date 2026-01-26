@@ -1,0 +1,149 @@
+{
+    "Hero": {
+        "badge": "Agenzia AI dell'Alto Adige",
+        "title1": "Rendiamo",
+        "title2": "la vostra azienda",
+        "title3": "pronta per il futuro.",
+        "description": "Meno sforzo manuale, più tempo per l'essenziale. Digitalizziamo e automatizziamo i vostri processi – in modo personale, locale e comprensibile.",
+        "cta_primary": "Richiedi analisi del potenziale",
+        "cta_secondary": "Vedi soluzioni",
+        "trust": "Partner tecnologico per le medie imprese"
+    },
+    "Pains": {
+        "label": "Vi suona familiare?",
+        "title": "Questi problemi vi costano tempo e denaro ogni giorno",
+        "time": {
+            "title": "Ore di inserimento dati",
+            "description": "I collaboratori passano tempo prezioso a copiare e gestire dati manualmente tra diversi sistemi."
+        },
+        "leads": {
+            "title": "Lead persi",
+            "description": "I potenziali clienti si perdono perché nessuno li ricontatta in tempo. Scelgono la concorrenza."
+        },
+        "support": {
+            "title": "Supporto sovraccarico",
+            "description": "I clienti aspettano ore per una risposta. Il vostro team è bloccato con domande standard."
+        },
+        "repetitive": {
+            "title": "Lavoro ripetitivo",
+            "description": "Collaboratori di valore sprecano le loro capacità con compiti che andrebbero automatizzati."
+        }
+    },
+    "Solutions": {
+        "label": "La nostra risposta",
+        "title": "Ecco come risolviamo le vostre sfide",
+        "time": {
+            "title": "Raccolta dati automatica",
+            "description": "I sistemi comunicano tra loro. I dati fluiscono automaticamente dove servono.",
+            "result": "10+ ore/settimana risparmiate"
+        },
+        "leads": {
+            "title": "Gestione lead intelligente",
+            "description": "Ogni contatto viene automaticamente registrato, qualificato e ricontattato al momento giusto.",
+            "result": "Nessun lead più perso"
+        },
+        "support": {
+            "title": "Assistenza clienti con IA",
+            "description": "Chatbot e assistenti telefonici rispondono alle domande standard immediatamente – 24 ore su 24.",
+            "result": "Disponibilità 24/7"
+        },
+        "repetitive": {
+            "title": "Automazione dei workflow",
+            "description": "Le attività di routine vengono eseguite in background. Il vostro team si concentra sul lavoro strategico.",
+            "result": "Più tempo per l'importante"
+        }
+    },
+    "Services": {
+        "label": "La nostra risposta",
+        "title": "Soluzioni su misura",
+        "description": "La tecnologia è valida solo quanto la sua applicazione. Sviluppiamo sistemi che si integrano perfettamente nella vostra realtà.",
+        "crm": {
+            "title": "CRM Smart & Vendite",
+            "description": "Centralizza i lead e segui automaticamente i contatti. Nessuna opportunità andrà persa – le vendite diventano strutturate e misurabili."
+        },
+        "websites": {
+            "title": "Siti Web AI",
+            "description": "Siti web all'avanguardia che mettono in risalto il vostro brand. Veloci, ottimizzati per il mobile e progettati per convincere."
+        },
+        "chatbots": {
+            "title": "Chatbot di Supporto",
+            "description": "Un collaboratore che non dorme mai. I nostri chatbot risolvono le richieste standard immediatamente (24/7)."
+        },
+        "phone": {
+            "title": "Assistenti Telefonici AI",
+            "description": "Prenotazione automatica di appuntamenti e qualificazione dei lead al telefono. Sempre disponibile e cortese."
+        }
+    },
+    "CTABanner": {
+        "badge": "Analisi gratuita",
+        "title": "Pronti a risparmiare tempo?",
+        "description": "In 15 minuti vi mostriamo quali processi nella vostra azienda possono essere automatizzati.",
+        "button": "Analisi del potenziale gratuita"
+    },
+    "Process": {
+        "title": "Come iniziamo",
+        "description": "La trasparenza è importante per noi. Dalla prima analisi al supporto continuo.",
+        "step1": {
+            "title": "Analisi del Potenziale (Gratuita)",
+            "description": "Scopriamo dove la vostra azienda perde tempo e denaro e se l'automazione conviene."
+        },
+        "step2": {
+            "title": "Strategia & Tabella di Marcia",
+            "description": "Riceverete un concetto chiaro: quali strumenti usiamo? Come li integriamo? Quanto costa?"
+        },
+        "step3": {
+            "title": "Implementazione",
+            "description": "Costruiamo la soluzione, la testiamo a fondo e formiamo il vostro team."
+        },
+        "step4": {
+            "title": "Supporto",
+            "description": "Non vi lasciamo soli dopo l'avvio. Ottimizziamo costantemente e siamo a disposizione per domande."
+        }
+    },
+    "FAQ": {
+        "title": "Domande Frequenti",
+        "description": "Risposte ai dubbi che potreste avere.",
+        "q1": {
+            "q": "La mia azienda è troppo piccola per l'IA?",
+            "a": "No. Soprattutto i piccoli team ne traggono grandi benefici. L'IA gestisce compiti ripetitivi."
+        },
+        "q2": {
+            "q": "E la protezione dei dati (GDPR)?",
+            "a": "La sicurezza è la nostra priorità. Utilizziamo soluzioni enterprise che soddisfano elevati standard."
+        },
+        "q3": {
+            "q": "L'IA sostituirà i miei dipendenti?",
+            "a": "L'obiettivo non è la sostituzione, ma il sollievo. Automatizziamo i compiti noiosi."
+        },
+        "q4": {
+            "q": "Quanto costa un'implementazione?",
+            "a": "Dipende dalla portata. Spesso iniziamo con piccoli 'Quick Wins'."
+        }
+    },
+    "Team": {
+        "title": "Chi c'è dietro?",
+        "description": "Siamo flowset. Un team dell'Alto Adige che capisce la tecnologia e vive l'imprenditorialità.",
+        "leon": "Marketing & Strategia",
+        "peter": "Prodotto & Sviluppo",
+        "david": "Vendite & Consulenza"
+    },
+    "Footer": {
+        "description": "flowset rende le aziende dell'Alto Adige pronte per il futuro attraverso l'IA e l'automazione.",
+        "contact": "Contatto",
+        "legal": "Note Legali",
+        "privacy": "Privacy",
+        "imprint": "Impressum",
+        "created_by": "Creato da flowset.ai"
+    },
+    "Contact": {
+        "title": "Iniziamo la vostra <span>evoluzione</span>",
+        "description": "Prenotate ora la vostra analisi del potenziale gratuita. Vi mostreremo dove l'IA vi farà risparmiare tempo e denaro.",
+        "placeholder_name": "Il vostro nome",
+        "placeholder_email": "La vostra E-Mail",
+        "placeholder_phone": "Il vostro numero di telefono",
+        "placeholder_message": "Come possiamo aiutarvi? (Opzionale)",
+        "submit": "Invia richiesta",
+        "success_title": "Richiesta inviata!",
+        "success_message": "Vi ricontatteremo entro 24 ore."
+    }
+}

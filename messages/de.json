@@ -1,0 +1,149 @@
+{
+    "Hero": {
+        "badge": "KI Agentur aus Südtirol",
+        "title1": "Wir machen",
+        "title2": "Ihr Unternehmen",
+        "title3": "zukunftsfähig.",
+        "description": "Weniger manueller Aufwand, mehr Zeit für das Wesentliche. Wir digitalisieren und automatisieren Ihre Prozesse – persönlich, lokal und verständlich.",
+        "cta_primary": "Potenzialanalyse anfordern",
+        "cta_secondary": "Lösungen ansehen",
+        "trust": "Technologie-Partner für den Mittelstand"
+    },
+    "Pains": {
+        "label": "Kennen Sie das?",
+        "title": "Diese Probleme kosten Sie täglich Zeit und Geld",
+        "time": {
+            "title": "Stundenlange Dateneingabe",
+            "description": "Mitarbeiter verbringen wertvolle Zeit damit, Daten manuell zwischen Systemen zu kopieren und zu pflegen."
+        },
+        "leads": {
+            "title": "Verlorene Leads",
+            "description": "Interessenten gehen unter, weil niemand rechtzeitig nachfasst. Potenzielle Kunden wählen die Konkurrenz."
+        },
+        "support": {
+            "title": "Überlasteter Support",
+            "description": "Kunden warten stundenlang auf Antworten. Ihr Team ist mit Standardfragen blockiert."
+        },
+        "repetitive": {
+            "title": "Repetitive Routinearbeit",
+            "description": "Wertvolle Mitarbeiter verschwenden ihre Fähigkeiten mit Aufgaben, die eigentlich automatisiert gehören."
+        }
+    },
+    "Solutions": {
+        "label": "Unsere Antwort",
+        "title": "So lösen wir Ihre Herausforderungen",
+        "time": {
+            "title": "Automatische Datenerfassung",
+            "description": "Systeme sprechen miteinander. Daten fließen automatisch dorthin, wo sie gebraucht werden.",
+            "result": "10+ Stunden/Woche gespart"
+        },
+        "leads": {
+            "title": "Intelligentes Lead-Management",
+            "description": "Jeder Kontakt wird automatisch erfasst, qualifiziert und zum richtigen Zeitpunkt nachgefasst.",
+            "result": "Keine Leads mehr verloren"
+        },
+        "support": {
+            "title": "KI-gestützter Kundenservice",
+            "description": "Chatbots und Telefonassistenten beantworten Standardfragen sofort – rund um die Uhr.",
+            "result": "24/7 Erreichbarkeit"
+        },
+        "repetitive": {
+            "title": "Workflow-Automatisierung",
+            "description": "Routineaufgaben laufen im Hintergrund. Ihr Team fokussiert sich auf strategische Arbeit.",
+            "result": "Mehr Zeit für Wichtiges"
+        }
+    },
+    "Services": {
+        "label": "Unsere Antwort",
+        "title": "Maßgeschneiderte Lösungen",
+        "description": "Technologie ist nur so gut wie ihre Anwendung. Wir entwickeln Systeme, die sich nahtlos in Ihren Betrieb integrieren.",
+        "crm": {
+            "title": "Smartes CRM & Vertrieb",
+            "description": "Leads zentralisieren und automatisch nachfassen. Kein Kontakt geht mehr verloren – Ihr Vertrieb wird strukturiert und messbar effizienter."
+        },
+        "websites": {
+            "title": "KI-Websites",
+            "description": "Hochmoderne Websites, die Ihre Marke perfekt in Szene setzen. Blitzschnell, mobil optimiert und darauf ausgelegt, Besucher zu überzeugen."
+        },
+        "chatbots": {
+            "title": "Support-Chatbots",
+            "description": "Ein Mitarbeiter, der nie schläft. Unsere Chatbots lösen Standardanfragen sofort (24/7) und entlasten Ihren Kundenservice massiv."
+        },
+        "phone": {
+            "title": "KI-Telefonassistenten",
+            "description": "Automatische Terminbuchung und Lead-Qualifizierung am Telefon. Ihr Assistent ist freundlich, präzise und immer erreichbar."
+        }
+    },
+    "CTABanner": {
+        "badge": "Kostenlose Analyse",
+        "title": "Bereit, Zeit zu sparen?",
+        "description": "In 15 Minuten zeigen wir Ihnen, welche Prozesse in Ihrem Unternehmen automatisiert werden können.",
+        "button": "Kostenlose Potenzialanalyse"
+    },
+    "Process": {
+        "title": "So starten wir",
+        "description": "Transparenz ist uns wichtig. Von der ersten Analyse bis zur laufenden Betreuung.",
+        "step1": {
+            "title": "Potenzialanalyse (Kostenlos)",
+            "description": "Wir finden heraus, wo in Ihrem Unternehmen Zeit und Geld verbrannt wird und ob sich eine Automatisierung lohnt."
+        },
+        "step2": {
+            "title": "Strategie & Fahrplan",
+            "description": "Sie erhalten ein klares Konzept: Welche Tools nutzen wir? Wie binden wir sie ein? Was kostet es?"
+        },
+        "step3": {
+            "title": "Umsetzung",
+            "description": "Wir bauen die Lösung, testen sie ausgiebig und schulen Ihr Team, damit alles reibungslos läuft."
+        },
+        "step4": {
+            "title": "Support",
+            "description": "Auch nach dem Start lassen wir Sie nicht allein. Wir optimieren laufend und stehen bei Fragen bereit."
+        }
+    },
+    "FAQ": {
+        "title": "Häufige Fragen",
+        "description": "Antworten auf Bedenken, die Sie vielleicht haben.",
+        "q1": {
+            "q": "Ist mein Unternehmen zu klein für KI?",
+            "a": "Nein. Gerade kleine Teams profitieren enorm. KI übernimmt repetitive Aufgaben, sodass Ihr Team wie ein Unternehmen mit doppelter Belegschaft agieren kann."
+        },
+        "q2": {
+            "q": "Wie steht es um den Datenschutz (DSGVO)?",
+            "a": "Sicherheit hat bei uns Priorität. Wir nutzen Enterprise-Lösungen, die hohe Datenschutzstandards erfüllen. Sensible Kundendaten werden geschützt."
+        },
+        "q3": {
+            "q": "Ersetzt KI meine Mitarbeiter?",
+            "a": "Das Ziel ist nicht Ersatz, sondern Entlastung. Wir automatisieren die 'langweiligen' Aufgaben, damit Ihre Mitarbeiter mehr Zeit für Strategie haben."
+        },
+        "q4": {
+            "q": "Wie teuer ist so eine Umsetzung?",
+            "a": "Das hängt vom Umfang ab. Wir starten oft mit kleinen 'Quick Wins'. Ein Erstgespräch zur Analyse ist bei uns immer kostenlos."
+        }
+    },
+    "Team": {
+        "title": "Wer steckt dahinter?",
+        "description": "Wir sind flowset. Ein Team aus Südtirol, das Technologie versteht und Unternehmertum lebt.",
+        "leon": "Marketing & Strategie",
+        "peter": "Product & Development",
+        "david": "Sales & Consulting"
+    },
+    "Footer": {
+        "description": "flowset macht Südtiroler Unternehmen zukunftsfähig durch KI und Automatisierung.",
+        "contact": "Kontakt",
+        "legal": "Rechtliches",
+        "privacy": "Datenschutz",
+        "imprint": "Impressum",
+        "created_by": "Created by flowset.ai"
+    },
+    "Contact": {
+        "title": "Starten wir Ihre <span>Evolutionsstufe</span>",
+        "description": "Vereinbaren Sie jetzt Ihre kostenlose Potenzialanalyse. Wir zeigen Ihnen, wo Sie durch KI Zeit und Geld sparen.",
+        "placeholder_name": "Ihr Name",
+        "placeholder_email": "Ihre E-Mail",
+        "placeholder_phone": "Ihre Telefonnummer",
+        "placeholder_message": "Wie können wir Ihnen helfen? (Optional)",
+        "submit": "Anfrage senden",
+        "success_title": "Anfrage gesendet!",
+        "success_message": "Wir melden uns innerhalb von 24 Stunden bei Ihnen."
+    }
+}

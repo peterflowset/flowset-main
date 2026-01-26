@@ -148,28 +148,53 @@ function ChatInterface() {
 function PhoneAnimation() {
     return (
         <div className="w-full h-full flex items-center justify-center relative">
-            <div className="relative">
-                {/* Animated rings */}
+            <div className="relative flex items-center justify-center">
+                {/* Pulsating background glow */}
+                <motion.div
+                    animate={{
+                        scale: [1, 1.2, 1],
+                        opacity: [0.1, 0.2, 0.1]
+                    }}
+                    transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                    className="absolute w-20 h-20 bg-brand-500 rounded-full blur-xl"
+                />
+
+                {/* Animated ripple rings */}
                 {[0, 1, 2].map((i) => (
                     <motion.div
                         key={i}
-                        initial={{ scale: 1, opacity: 0.6 }}
-                        animate={{ scale: 2, opacity: 0 }}
+                        initial={{ scale: 0.8, opacity: 0.5 }}
+                        animate={{ scale: 2.2, opacity: 0 }}
                         transition={{
-                            duration: 2,
+                            duration: 3,
                             repeat: Infinity,
-                            delay: i * 0.6,
+                            delay: i * 1,
                             ease: "easeOut",
                         }}
-                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full border-2 border-brand-400"
+                        className="absolute w-12 h-12 rounded-full border border-brand-400/50"
                     />
                 ))}
 
-                {/* Phone button */}
+                {/* Main Phone button */}
                 <motion.div
-                    animate={{ scale: [1, 1.05, 1] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                    className="relative w-12 h-12 rounded-full bg-gradient-to-br from-brand-500 to-brand-600 flex items-center justify-center text-white shadow-lg shadow-brand-500/30"
+                    animate={{
+                        scale: [1, 1.08, 1],
+                        boxShadow: [
+                            "0 0 0px 0px rgba(59, 130, 246, 0)",
+                            "0 0 20px 5px rgba(59, 130, 246, 0.3)",
+                            "0 0 0px 0px rgba(59, 130, 246, 0)"
+                        ]
+                    }}
+                    transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                    className="relative z-10 w-12 h-12 rounded-full bg-gradient-to-br from-brand-500 to-brand-600 flex items-center justify-center text-white border border-white/20"
                 >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -178,8 +203,8 @@ function PhoneAnimation() {
             </div>
 
             {/* Status text */}
-            <div className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[9px] text-slate-500 whitespace-nowrap">
-                <span className="inline-flex items-center gap-1">
+            <div className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[9px] text-slate-500 font-medium whitespace-nowrap">
+                <span className="inline-flex items-center gap-1 bg-white/80 px-2 py-0.5 rounded-full border border-slate-100">
                     <span className="w-1 h-1 rounded-full bg-emerald-500 animate-pulse" />
                     24/7 erreichbar
                 </span>

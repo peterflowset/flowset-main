@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   title: "KI Agentur Südtirol | flowset | Automatisierung & Digitalisierung",
   description: "Wir machen Südtiroler Unternehmen zukunftsfähig. flowset automatisiert Prozesse und steigert Effizienz mit modernster KI.",
   keywords: ["KI Agentur", "Südtirol", "Automatisierung", "Digitalisierung", "flowset"],
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export const viewport: Viewport = {

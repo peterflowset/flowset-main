@@ -5,6 +5,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { routing } from "@/lib/navigation";
 import { notFound } from "next/navigation";
+import { CookieBanner } from "@/components/CookieBanner";
 
 const sans = Hanken_Grotesk({
   subsets: ["latin"],
@@ -54,6 +55,7 @@ export default async function RootLayout({
       <body className={`${sans.variable} ${display.variable} font-sans antialiased`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
+          <CookieBanner />
         </NextIntlClientProvider>
       </body>
     </html>

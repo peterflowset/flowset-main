@@ -26,10 +26,10 @@ export function Footer() {
                             {t("description")}
                         </p>
                         <div className="flex gap-4 mt-8">
-                            <a href="#" className="p-3 rounded-xl bg-slate-900 hover:bg-slate-800 transition-colors">
+                            <a href="https://linkedin.com/company/flowset" target="_blank" rel="noopener noreferrer" className="p-3 rounded-xl bg-slate-900 hover:bg-slate-800 transition-colors">
                                 <Linkedin className="w-5 h-5 text-white" />
                             </a>
-                            <a href="#" className="p-3 rounded-xl bg-slate-900 hover:bg-slate-800 transition-colors">
+                            <a href="https://instagram.com/flowset.ai" target="_blank" rel="noopener noreferrer" className="p-3 rounded-xl bg-slate-900 hover:bg-slate-800 transition-colors">
                                 <Instagram className="w-5 h-5 text-white" />
                             </a>
                         </div>

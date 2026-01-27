@@ -6,9 +6,9 @@ import Image from "next/image";
 import { Mail } from "lucide-react";
 
 const members = [
-    { name: "Leon Gitterle", id: "leon", image: "/team/Leon.png", email: "leon@flowset.ai" },
-    { name: "Peter Kasseroler", id: "peter", image: "/team/Peter.png", email: "peter@flowset.ai" },
-    { name: "David Peintner", id: "david", image: "/team/David.png", email: "david@flowset.ai" },
+    { name: "Leon Gitterle", id: "leon", image: "/team/Leon.png", email: "leon@flowset.ai", objectPosition: "bottom" },
+    { name: "Peter Kasseroler", id: "peter", image: "/team/Peter.png", email: "peter@flowset.ai", objectPosition: "top" },
+    { name: "David Peintner", id: "david", image: "/team/David.png", email: "david@flowset.ai", objectPosition: "bottom" },
 ];
 
 export function Team() {
@@ -56,7 +56,7 @@ export function Team() {
                                         src={member.image}
                                         alt={member.name}
                                         fill
-                                        className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                                        className={`object-cover scale-[1.2] transition-transform duration-700 group-hover:scale-[1.25] ${member.objectPosition === "bottom" ? "object-bottom" : "object-top"}`}
                                         sizes="(max-width: 768px) 100vw, 33vw"
                                         priority
                                     />
